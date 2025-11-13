@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
+<title>About — Samir J. Shah</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+
+<!-- Leaflet (map) -->
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+
+<style>
+:root{
+  --graphite:#0B1220; --ink:#1f2937;
+  --accent1:#F97316; --accent2:#EA580C;
+  --softbg1:#FFF7ED; --softbg2:#FFE7D3;
+  --beige:#f2ebe3; --beige-border:#e2d9cf;
+}
+
+/* Base */
+*{box-sizing:border-box}
+html,body{margin:0}
+body{
+  font-family:'Poppins',system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
+  color:var(--ink);
+  background:linear-gradient(180deg,var(--softbg1) 0%, var(--softbg2) 100%);
+  overflow-x:hidden;
+  -webkit-tap-highlight-color:transparent;
+}
+img{max-width:100%;height:auto;display:block}
+
+/* ===== CANONICAL HEADER (responsive) ===== */
+.topbar{
+  background:var(--beige);
+  border-bottom:1px solid var(--beige-border);
+  position:sticky; top:0; z-index:1000;
+  box-shadow:0 2px 6px rgba(0,0,0,.05);
+}
+.nav{max-width:1180px;margin:0 auto;padding:12px 16px;display:flex;align-items:center;gap:12px}
+.brand{display:flex;align-items:center;gap:10px;color:#db6809;font-weight:800;font-size:1.15rem;text-decoration:none}
+.brand img{width:48px;height:48px;border-radius:50%;object-fit:cover;border:2px solid var(--accent1)}
+
+/* desktop links */
+.navlinks{margin-left:auto;display:flex;gap:22px;flex-wrap:wrap}
+.navlinks a{color:var(--ink);text-decoration:none;font-weight:700;opacity:.85;transition:.25s}
+.navlinks a:hover{color:var(--accent1);opacity:1}
+
+/* hamburger for mobile */
+.menu-toggle{
+  margin-left:auto;
+  width:42px;height:38px;border:0;border-radius:10px;cursor:pointer;
+  background:#fff;box-shadow:0 2px 8px rgba(0,0,0,.08);
+  display:none;place-items:center;
+}
+.menu-toggle i{font-size:18px;color:#0b1220}
+
+@media (max-width:860px){
+  .menu-toggle{display:grid}
+  .navlinks{
+    position:fixed; inset:auto 0 0 0; /* bottom sheet style */
+    background:#fff; border-top-left-radius:16px; border-top-right-radius:16px;
+    box-shadow:0 -10px 30px rgba(0,0,0,.18);
+    padding:14px 18px 18px; gap:10px;
+    transform:translateY(110%); transition:transform .28s ease;
+    display:grid; grid-template-columns:1fr 1fr; z-index:1001;
+  }
+  .navlinks.open{ transform:translateY(0) }
+  .navlinks a{padding:12px 10px;border:1px solid #eef0f3;border-radius:10px;text-align:center}
+}
+
+/* Hero */
+.hero{padding: clamp(36px, 6vw, 70px) 16px 24px}
+.hero .wrap{max-width:920px;margin:0 auto;text-align:center}
+.kicker{color:var(--accent1);letter-spacing:.14em;text-transform:uppercase;font-weight:800;font-size:.9rem;margin:0 0 8px}
+.hero-title{
+  font-family:'Playfair Display',serif;color:#1c2d57;
+  font-size:clamp(1.9rem,1.2rem + 2.2vw,3rem);margin:0 0 10px;position:relative;display:inline-block
+}
+.hero-title::after{content:"";display:block;height:4px;background:linear-gradient(90deg,var(--accent1),var(--accent2));border-radius:6px;margin:10px auto 0;width:140px}
+.lead{color:#2a3852;max-width:70ch;margin:12px auto 0;font-size:clamp(.98rem,2.2vw,1.05rem);line-height:1.75;font-weight:600;padding:0 4px}
+
+/* Badges */
+.badge-row{display:flex;gap:10px;flex-wrap:wrap;justify-content:center;margin:20px auto 24px;max-width:1100px;padding:0 12px}
+.badge{display:inline-flex;align-items:center;gap:8px;padding:10px 12px;border-radius:999px;background:#fff;border:1px solid #eee;box-shadow:0 6px 16px rgba(0,0,0,.08);font-weight:800}
+.badge i{color:#F97316}
+
+/* Three cards */
+.cards{max-width:1100px;margin:0 auto 14px;display:grid;grid-template-columns:1fr;gap:14px;padding:0 16px}
+@media (min-width:700px){ .cards{grid-template-columns:repeat(3,1fr)} }
+.card{
+  background:rgba(255,255,255,0.9);
+  border:1px solid #f1efe9;
+  border-top:4px solid var(--accent1);
+  color:#0f172a;border-radius:16px;
+  box-shadow:0 12px 30px rgba(0,0,0,.07);
+  padding:22px; transition:transform .25s ease, box-shadow .25s ease, border-color .3s ease;
+}
+.card:hover{transform:translateY(-4px);box-shadow:0 20px 40px rgba(234,88,12,.22);border-top-color:var(--accent2)}
+.card p{margin:0;color:#334155;line-height:1.6}
+.card .head{margin:0 0 6px;font-weight:800}
+
+/* Key numbers */
+.section-title{text-align:center;margin:34px auto 12px;font-family:'Playfair Display',serif;font-size:clamp(1.6rem,1.2rem + 2vw,2.4rem);color:#1c2d57}
+.section-title::after{content:"";display:block;width:120px;height:4px;margin:10px auto 0;background:linear-gradient(90deg,#F97316,#EA580C);border-radius:6px}
+.stats-wrap{max-width:1180px;margin:0 auto;padding:4px 16px}
+.stats{display:grid;grid-template-columns:1fr;gap:12px}
+@media (min-width:700px){ .stats{grid-template-columns:repeat(2,1fr)} }
+@media (min-width:1020px){ .stats{grid-template-columns:repeat(4,1fr)} }
+.stat{background:#fff;border:1px solid #eef0f3;border-radius:16px;box-shadow:0 12px 26px rgba(0,0,0,.08);text-align:center;padding:18px}
+.stat .num{font-size:clamp(1.8rem,6vw,2.4rem);font-weight:800;color:#1c2d57;line-height:1.1}
+.stat .label{margin-top:6px;color:#475569;font-weight:600}
+.stat i{color:var(--accent1);margin-right:6px}
+
+/* Timeline table: make scrollable on mobile */
+.table-wrap{overflow:auto; -webkit-overflow-scrolling:touch}
+.table-wrap table{min-width:820px}
+.table-wrap th,.table-wrap td{white-space:nowrap}
+
+/* Map section */
+#global-map{background:#FFF7ED;padding: clamp(34px,7vw,70px) 16px;text-align:center}
+#sjsMap{height:52vh;min-height:360px;max-height:560px;max-width:1180px;margin:0 auto;border-radius:16px;overflow:hidden;box-shadow:0 12px 28px rgba(0,0,0,.12)}
+
+/* Footer (canonical) */
+.footer{
+  background:var(--graphite);border-top:1px solid #182233;color:#d6dbe3;padding:28px 16px;margin-top:34px;position:relative
+}
+.footer::before{content:"";position:absolute;left:0;top:0;right:0;height:3px;background:linear-gradient(90deg,var(--accent1),var(--accent2))}
+.footwrap{max-width:1180px;margin:0 auto;display:grid;gap:12px;grid-template-columns:repeat(auto-fit,minmax(220px,1fr))}
+.fitem{display:flex;align-items:center;gap:10px}
+.fitem i{color:var(--accent1)}
+.fitem a{color:#fff;text-decoration:none;font-weight:700}
+.fitem a:hover{color:#EA580C}
+
+/* Hide default map attribution */
+.leaflet-control-attribution{display:none !important}
+
+/* No underline sitewide */
+a{text-decoration:none !important} a:hover{text-decoration:none !important}
+
+/* ===== UNIFORM HERO HEADER STYLE (SAME FOR ALL PAGES) ===== */
+.hero {
+  text-align: center;
+  padding: 72px 20px; /* consistent spacing top-bottom */
+  background: linear-gradient(180deg, var(--softbg1), #fff);
+}
+
+.hero .cap {
+  font-size: 42px;
+  color: var(--accent1);
+  margin-bottom: 10px;
+}
+
+.hero h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(1.8rem, 1.1rem + 2.4vw, 3rem); /* scales nicely */
+  margin-bottom: 8px;
+  color: #1c2d57;
+}
+
+.hero p {
+  color: #475569;
+  max-width: 760px;
+  margin: 0 auto 18px;
+  font-size: clamp(.98rem, .9rem + .4vw, 1.06rem);
+}
+
+</style>
+</head>
+<body>
+
+<!-- ===== NAV (same links/order) ===== -->
+<div class="topbar">
+  <div class="nav">
+    <a class="brand" href="index.html"><img src="Samir J. Shah photo.jpg" alt="SJS"><span>Samir J. Shah</span></a>
+    <button class="menu-toggle" aria-label="Menu" aria-expanded="false"><i class="fa-solid fa-bars"></i></button>
+    <nav class="navlinks" id="mobileNav">
+      <a href="about.html">About</a>
+      <a href="Affiliations.html">Affiliations</a>
+      <a id="nav-books" href="books.html">Books</a>
+      <a id="nav-media" href="news.html">Media</a>
+      <a id="nav-blogs" href="blogs.html">blogs</a>
+      <a href="#contact">Connect</a>
+    </nav>
+  </div>
+</div>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="wrap">
+    <h2 class="kicker">About</h2>
+    <h1 class="hero-title">Leadership in Logistics & Trade</h1>
+    <p class="lead"><strong>Samir J. Shah</strong> is a recognized leader in logistics and international trade with over four decades of experience across Customs Brokerage, International Freight Forwarding, Shipping Agency Operations and Air Cargo Logistics. A teacher and author by passion, he designs industry-aligned curriculums and mentors the next generation of trade professionals.</p>
+  </div>
+</section>
+
+<!-- BADGES -->
+<div class="badge-row">
+  <span class="badge"><i class="fa-solid fa-id-card-clip"></i>Licensed Customs Broker</span>
+  <span class="badge"><i class="fa-solid fa-plane"></i>IATA Agent</span>
+  <span class="badge"><i class="fa-solid fa-ship"></i>Shipping Agent</span>
+  <span class="badge"><i class="fa-solid fa-chalkboard-user"></i>Teacher & Mentor</span>
+  <span class="badge"><i class="fa-solid fa-book"></i>Author</span>
+  <span class="badge"><i class="fa-brands fa-youtube"></i>TEDx Speaker</span>
+  <span class="badge"><i class="fa-solid fa-location-dot"></i>Freight Forwarder</span>
+</div>
+
+<!-- THREE CARDS -->
+<div class="cards">
+  <div class="card">
+    <p class="head"><i class="fa-solid fa-graduation-cap" style="color:#F97316"></i> Curriculum Builder</p>
+    <p>Designed 20+ specialized programs for logistics & SCM education; trains students and working professionals.</p>
+  </div>
+  <div class="card">
+    <p class="head"><i class="fa-solid fa-microphone-lines" style="color:#F97316"></i> Policy Contributor</p>
+    <p>Active across regional, national and international forums shaping customs, trade facilitation and logistics reforms.</p>
+  </div>
+  <div class="card">
+    <p class="head"><i class="fa-solid fa-microphone-lines" style="color:#F97316"></i> Speaker & Advisor</p>
+    <p>Addressed 250+ congresses & conferences; invited for leadership talks, keynotes and industry guidance.</p>
+  </div>
+</div>
+
+<!-- KEY NUMBERS -->
+<section aria-label="Key Numbers">
+  <h2 class="section-title">Key Numbers</h2>
+  <div class="stats-wrap">
+    <div class="stats">
+      <div class="stat">
+        <div class="num" data-target="45" data-suffix="+">0</div>
+        <div class="label"><i class="fa-solid fa-briefcase"></i>Years in Logistics & EXIM</div>
+      </div>
+      <div class="stat">
+        <div class="num" data-target="20" data-suffix="+">0</div>
+        <div class="label"><i class="fa-solid fa-graduation-cap"></i>Curriculums Designed</div>
+      </div>
+      <div class="stat">
+        <div class="num" data-target="250" data-suffix="+">0</div>
+        <div class="label"><i class="fa-solid fa-microphone-lines"></i>Conferences Addressed</div>
+      </div>
+      <div class="stat">
+        <div class="num" data-target="1" data-suffix="+">0</div>
+        <div class="label"><i class="fa-solid fa-earth-asia"></i>International Policy Leadership</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SIMPLE TIMELINE -->
+<section style="max-width:1180px;margin:34px auto;padding:0 16px;">
+  <div class="table-wrap" style="border:1px solid #ccc;border-radius:8px;overflow:hidden;background:#fff;box-shadow:0 10px 28px rgba(0,0,0,.06)">
+    <table style="width:100%;border-collapse:collapse;font-family:'Poppins',Arial,sans-serif;color:#000;background:#fff;">
+      <thead>
+        <tr style="border-bottom:2px solid #000;background:#fff;">
+          <th style="padding:12px 14px;text-align:left;">Year</th>
+          <th style="padding:12px 14px;text-align:left;">Milestone</th>
+          <th style="padding:12px 14px;text-align:left;">Details</th>
+          <th style="padding:12px 14px;text-align:left;">Tags</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr style="border-bottom:1px solid #ddd;">
+          <td style="padding:12px 14px;">1990</td>
+          <td style="padding:12px 14px;">Started logistics career</td>
+          <td style="padding:12px 14px;">Hands-on operations, documentation & client service.</td>
+          <td style="padding:12px 14px;">Operations, Discipline, Client trust</td>
+        </tr>
+        <tr style="border-bottom:1px solid #ddd;">
+          <td style="padding:12px 14px;">2000</td>
+          <td style="padding:12px 14px;">Founded JB Infotech</td>
+          <td style="padding:12px 14px;">Entrepreneurship with tech-led, process-driven logistics.</td>
+          <td style="padding:12px 14px;">Tech-led, SLAs, Reliability</td>
+        </tr>
+        <tr style="border-bottom:1px solid #ddd;">
+          <td style="padding:12px 14px;">2005</td>
+          <td style="padding:12px 14px;">Licensed Customs Broker</td>
+          <td style="padding:12px 14px;">Expanded into end-to-end customs clearance & advisory.</td>
+          <td style="padding:12px 14px;">Customs, Advisory, Risk</td>
+        </tr>
+        <tr style="border-bottom:1px solid #ddd;">
+          <td style="padding:12px 14px;">2010</td>
+          <td style="padding:12px 14px;">JB Infotech → JBS Academy Pvt. Ltd.</td>
+          <td style="padding:12px 14px;">Shift to education — building industry-ready programs.</td>
+          <td style="padding:12px 14px;">Curriculums, Mentorship, Workforce</td>
+        </tr>
+        <tr style="border-bottom:1px solid #ddd;">
+          <td style="padding:12px 14px;">2013</td>
+          <td style="padding:12px 14px;">TEDx Speaker</td>
+          <td style="padding:12px 14px;">Simplifying complex trade ideas for wider audiences.</td>
+          <td style="padding:12px 14px;">Thought leadership, Storytelling</td>
+        </tr>
+        <tr>
+          <td style="padding:12px 14px;">2023</td>
+          <td style="padding:12px 14px;">Represented India at FIATA</td>
+          <td style="padding:12px 14px;">Collaborated on global training standards & future skills.</td>
+          <td style="padding:12px 14px;">International forums, Standards</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- MAP -->
+<section id="global-map">
+  <h2 style="font-family:'Playfair Display',serif;font-size:clamp(1.6rem,4.6vw,2.2rem);color:#1f2937;margin:0 0 12px;">
+    <i class="fa-solid fa-globe" style="color:#F97316;margin-right:10px;"></i>
+    Global Footprint in Logistics & Trade
+  </h2>
+  <p style="max-width:900px;margin:0 auto 18px;color:#475569;padding:0 8px;">
+    Highlighted destinations where Samir J. Shah has delivered talks, attended forums, or engaged with the trade community.
+  </p>
+  <div id="sjsMap"></div>
+</section>
+
+<!-- ===== FOOTER (exact) ===== -->
+<footer id="contact" class="footer">
+  <div class="footwrap">
+    <div class="fitem"><i class="fa-solid fa-envelope"></i><a href="mailto:samir@jbsacademy.com">samir@jbsacademy.com</a></div>
+    <div class="fitem"><i class="fa-solid fa-phone"></i><a href="tel:+919574005089">+91 9574005089</a></div>
+    <div class="fitem"><i class="fa-brands fa-linkedin"></i><a href="https://www.linkedin.com/in/samirjshah1/" target="_blank" rel="noopener">LinkedIn Profile</a></div>
+    <div class="fitem"><i class="fa-solid fa-location-dot"></i><span>Ahmedabad, India</span></div>
+  </div>
+</footer>
+
+<script>
+/* Header mobile menu */
+const menuBtn = document.querySelector('.menu-toggle');
+const navLinks = document.getElementById('mobileNav');
+menuBtn?.addEventListener('click', ()=>{
+  const open = navLinks.classList.toggle('open');
+  menuBtn.setAttribute('aria-expanded', String(open));
+});
+window.addEventListener('keydown', (e)=>{ if(e.key==='Escape') navLinks.classList.remove('open') });
+
+/* Key Numbers Count-Up */
+function countUp(el, target, suffix, duration=1200){
+  if(el.dataset.done === "1") return;
+  if(window.matchMedia('(prefers-reduced-motion: reduce)').matches){
+    el.textContent = target + (suffix||""); el.dataset.done = "1"; return;
+  }
+  const start = performance.now(), from = 0, ease = t => 1 - Math.pow(1 - t, 3);
+  function step(now){
+    const p = Math.min(1, (now - start) / duration);
+    el.textContent = Math.round(from + (target - from) * ease(p)) + (suffix||"");
+    if(p < 1) requestAnimationFrame(step); else el.dataset.done = "1";
+  }
+  requestAnimationFrame(step);
+}
+function initCounters(){
+  const nums = document.querySelectorAll('.num');
+  const runAll = ()=> nums.forEach(el=>{
+    const target = +el.getAttribute('data-target') || 0;
+    const suffix = el.getAttribute('data-suffix') || '';
+    countUp(el, target, suffix);
+  });
+  const block = document.querySelector('.stats-wrap');
+  if('IntersectionObserver' in window && block){
+    const io = new IntersectionObserver((entries)=>{
+      entries.forEach(entry=>{ if(entry.isIntersecting){ runAll(); io.disconnect(); } });
+    }, {threshold:0.25});
+    io.observe(block);
+  }else{ setTimeout(runAll, 600); }
+}
+window.addEventListener('load', initCounters);
+
+/* Leaflet Map */
+const places = [
+  { name: "Switzerland — Geneva", lat:46.2044, lng:6.1432 },
+  { name: "United Kingdom — London (CILT UK)", lat:51.5074, lng:-0.1278 },
+  { name: "Belgium — Brussels", lat:50.8503, lng:4.3517 },
+  { name: "Netherlands — Rotterdam", lat:51.9244, lng:4.4777 },
+  { name: "UAE — Dubai", lat:25.2048, lng:55.2708 },
+  { name: "UAE — Abu Dhabi", lat:24.4539, lng:54.3773 },
+  { name: "India — New Delhi", lat:28.6139, lng:77.2090 },
+  { name: "India — Mumbai", lat:19.0760, lng:72.8777 },
+  { name: "India — Chennai", lat:13.0827, lng:80.2707 },
+  { name: "India — Kochi", lat:9.9312, lng:76.2673 },
+  { name: "India — Kolkata", lat:22.5726, lng:88.3639 },
+  { name: "India — Bengaluru", lat:12.9716, lng:77.5946 },
+  { name: "India — Visakhapatnam", lat:17.6868, lng:83.2185 },
+  { name: "Sri Lanka — Colombo", lat:6.9271, lng:79.8612 },
+  { name: "Bangladesh — Dhaka", lat:23.8103, lng:90.4125 },
+  { name: "Malaysia — Kuala Lumpur", lat:3.1390, lng:101.6869 },
+  { name: "Singapore", lat:1.3521, lng:103.8198 },
+  { name: "Vietnam — Hanoi", lat:21.0278, lng:105.8342 },
+  { name: "Hong Kong", lat:22.3193, lng:114.1694 },
+  { name: "Indonesia — Bali (Denpasar)", lat:-8.65, lng:115.2167 },
+  { name: "Brunei — Bandar Seri Begawan", lat:4.9031, lng:114.9398 },
+  { name: "United States (various)", lat:39.8283, lng:-98.5795 }
+];
+
+const map = L.map("sjsMap",{scrollWheelZoom:false,attributionControl:false,zoomControl:true});
+L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",{maxZoom:19}).addTo(map);
+const group = L.featureGroup().addTo(map);
+const orange = "#F97316";
+places.forEach(p=>{
+  L.circleMarker([p.lat,p.lng],{radius:7,color:orange,weight:2,fillColor:orange,fillOpacity:.85})
+   .bindPopup(`<strong>${p.name}</strong>`).addTo(group);
+});
+function fitNow(){
+  try{ map.fitBounds(group.getBounds(),{padding:[28,28]}); }catch(_){}
+}
+window.addEventListener('load', fitNow);
+window.addEventListener('resize', ()=> setTimeout(fitNow, 200));
+map.on('mouseover', ()=> map.scrollWheelZoom.enable());
+map.on('mouseout',  ()=> map.scrollWheelZoom.disable());
+
+/* Close mobile sheet when a link is tapped */
+document.querySelectorAll('#mobileNav a').forEach(a=>{
+  a.addEventListener('click', ()=> navLinks.classList.remove('open'));
+});
+</script>
+</body>
+</html>

@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Education & Professional Qualification — Samir J. Shah</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+
+<style>
+:root{
+  --graphite:#0B1220; --ink:#1f2937; --muted:#6b7280;
+  --accent1:#F97316; --accent2:#EA580C;
+  --softbg1:#FFF7ED; --softbg2:#FFE7D3;
+  --card:#ffffff; --stroke:#eee6dd;
+  --beige:#f2ebe3; --beige-border:#e2d9cf;
+}
+
+/* Reset */
+*{box-sizing:border-box;margin:0;padding:0;scroll-behavior:smooth}
+img{max-width:100%;display:block}
+button{font:inherit;background:none;border:0;cursor:pointer}
+
+/* Base */
+body{
+  font-family:'Poppins',system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
+  background:linear-gradient(180deg,var(--softbg1) 0%,var(--softbg2) 100%);
+  color:var(--ink); line-height:1.6;
+}
+
+/* ===== HEADER ===== */
+.topbar{
+  background:var(--beige);
+  border-bottom:1px solid var(--beige-border);
+  position:sticky; top:0; z-index:20;
+  box-shadow:0 2px 6px rgba(0,0,0,.05);
+}
+.nav{
+  max-width:1180px;margin:0 auto;padding:12px 16px;
+  display:flex;align-items:center;gap:12px;
+}
+.brand{
+  display:flex;align-items:center;gap:12px;
+  color:#db6809;text-decoration:none;font-weight:800;font-size:1.25rem;
+  min-width:0;
+}
+.brand img{width:54px;height:54px;border-radius:50%;object-fit:cover;border:2px solid var(--accent1)}
+/* Desktop nav */
+.navlinks{
+  margin-left:auto;display:flex;gap:22px;flex-wrap:wrap;align-items:center;
+}
+.navlinks a{color:var(--ink);text-decoration:none;font-weight:700;opacity:.85;transition:.25s}
+.navlinks a:hover{color:var(--accent1);opacity:1}
+
+/* Mobile toggle (hidden on desktop) */
+.navtoggle{
+  margin-left:auto;display:none;width:40px;height:40px;border-radius:10px;
+  display:none;align-items:center;justify-content:center;
+}
+.navtoggle i{font-size:20px;color:var(--ink)}
+/* Mobile menu sheet */
+.msheet{
+  display:none; position:absolute; left:0; right:0; top:100%;
+  background:#fff; border-bottom:1px solid var(--beige-border);
+  box-shadow:0 10px 30px rgba(0,0,0,.08);
+}
+.msheet a{
+  display:block;padding:14px 18px;border-top:1px solid #f4efe8;
+  color:#0f172a;text-decoration:none;font-weight:700;
+}
+.msheet a:hover{background:#fff7ef;color:var(--accent2)}
+
+/* ===== Hero ===== */
+.hero{text-align:center;padding:72px 20px;background:linear-gradient(180deg,var(--softbg1),#fff)}
+.hero .cap{font-size:42px;color:var(--accent1);margin-bottom:10px}
+.hero h1{
+  font-family:'Playfair Display',serif;
+  font-size:clamp(1.8rem,1.1rem + 2.4vw,3rem);
+  margin-bottom:8px;color:#1c2d57
+}
+.hero p{color:#475569;max-width:760px;margin:0 auto 18px;font-size:clamp(.98rem,.9rem + .4vw,1.06rem)}
+
+/* ===== Content ===== */
+.wrap{max-width:1100px;margin:0 auto;padding:36px 20px 60px}
+.grid{display:grid;grid-template-columns:1fr;gap:18px}
+@media (min-width:880px){ .grid{grid-template-columns:1fr 1fr} }
+
+.card{
+  background:var(--card); border:1px solid var(--stroke); border-radius:16px;
+  padding:20px; box-shadow:0 10px 26px rgba(0,0,0,.06);
+  opacity:0; transform:translateY(28px);
+  transition:opacity .6s ease, transform .6s ease, box-shadow .25s ease, border-color .25s ease;
+}
+.card.visible{opacity:1; transform:translateY(0)}
+.card:hover{box-shadow:0 16px 40px rgba(234,88,12,.16); border-color:#ead9c7}
+
+.card .head{display:flex;align-items:center;gap:12px;margin-bottom:8px}
+.card .head .ico{width:38px;height:38px;border-radius:10px;display:grid;place-items:center;background:#fff2e9;border:1px solid #ffd7bf;color:var(--accent2)}
+.card h2{font-size:1.06rem;margin:0;color:#0f172a}
+.card p.lead{color:#475569;margin:2px 0 10px;font-size:.98rem}
+
+.card ul{list-style:none;margin:6px 0 0;padding-left:0}
+.card li{padding-left:22px;margin:8px 0;position:relative}
+.card li::before{content:"•";position:absolute;left:0;top:0;color:var(--accent1);font-weight:800}
+
+/* ===== FOOTER ===== */
+.footer{
+  background:var(--graphite);border-top:1px solid #182233;color:#d6dbe3;
+  padding:40px 20px;margin-top:40px; position:relative;
+}
+.footer::before{
+  content:""; position:absolute; left:0; top:0; right:0; height:3px;
+  background:linear-gradient(90deg,var(--accent1),var(--accent2));
+}
+.footwrap{
+  max-width:1180px;margin:0 auto;display:grid;gap:14px;
+  grid-template-columns:repeat(auto-fit,minmax(220px,1fr))
+}
+.fitem{display:flex;align-items:center;gap:10px;min-height:40px}
+.fitem i{color:var(--accent1)}
+.fitem a{color:#ffffff;text-decoration:none;font-weight:700;word-break:break-word}
+.fitem a:hover{color:#EA580C}
+.fitem span{color:#e7ebf2;font-weight:700}
+
+/* Page transition */
+.fade-overlay{position:fixed;inset:0;background:#fff;z-index:9999;opacity:1;pointer-events:none;transition:opacity .6s ease}
+body.loaded .fade-overlay{opacity:0}
+
+/* ====== RESPONSIVE POLISH (mobile-first tweaks that do NOT affect desktop) ====== */
+@media (max-width:880px){
+  .brand img{width:46px;height:46px}
+  .brand span{font-size:1.1rem;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:58vw}
+  .navlinks{display:none}                /* hide desktop links */
+  .navtoggle{display:flex}               /* show hamburger */
+  .msheet{display:block}                 /* menu exists but hidden via inline style; JS controls visibility */
+  .hero{padding:56px 16px}
+  .hero .cap{font-size:34px}
+  .wrap{padding:26px 16px 44px}
+  .card{padding:16px;border-radius:14px}
+  .card .head .ico{width:34px;height:34px;border-radius:8px}
+  .card h2{font-size:1rem}
+  .card p.lead{font-size:.95rem}
+  .card li{margin:6px 0}
+}
+
+/* Very small devices */
+@media (max-width:380px){
+  .brand span{display:none}
+  .hero p{font-size:.95rem}
+}
+
+/* Reduce tap-jank on iOS safe areas */
+@supports (padding: max(0px)){
+  .topbar{padding-top:env(safe-area-inset-top)}
+  .msheet{padding-bottom:env(safe-area-inset-bottom)}
+}
+
+/* ===== UNIFORM HERO HEADER STYLE (SAME FOR ALL PAGES) ===== */
+.hero {
+  text-align: center;
+  padding: 72px 20px; /* consistent spacing top-bottom */
+  background: linear-gradient(180deg, var(--softbg1), #fff);
+}
+
+.hero .cap {
+  font-size: 42px;
+  color: var(--accent1);
+  margin-bottom: 10px;
+}
+
+.hero h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(1.8rem, 1.1rem + 2.4vw, 3rem); /* scales nicely */
+  margin-bottom: 8px;
+  color: #1c2d57;
+}
+
+.hero p {
+  color: #475569;
+  max-width: 760px;
+  margin: 0 auto 18px;
+  font-size: clamp(.98rem, .9rem + .4vw, 1.06rem);
+}
+
+</style>
+</head>
+<body>
+
+<!-- ===== HEADER (exact links/order) ===== -->
+<div class="topbar">
+  <div class="nav">
+    <a class="brand" href="index.html">
+      <img src="Samir J. Shah photo.jpg" alt="SJS"><span>Samir J. Shah</span>
+    </a>
+
+    <!-- desktop links -->
+    <nav class="navlinks" aria-label="Primary">
+      <a href="about.html">About</a>
+      <a href="Affiliations.html">Affiliations</a>
+      <a href="books.html">Books</a>
+      <a href="news.html">Media</a>
+      <a href="blogs.html">blogs</a>
+      <a href="#contact">Connect</a>
+    </nav>
+
+    <!-- mobile toggle -->
+    <button class="navtoggle" id="navToggle" aria-label="Open menu" aria-expanded="false" aria-controls="mobileMenu">
+      <i class="fa-solid fa-bars"></i>
+    </button>
+  </div>
+
+  <!-- mobile sheet menu (hidden by default; JS toggles height) -->
+  <div class="msheet" id="mobileMenu" style="max-height:0;overflow:hidden;transition:max-height .35s ease;">
+    <a href="about.html">About</a>
+    <a href="Affiliations.html">Affiliations</a>
+    <a href="books.html">Books</a>
+    <a href="news.html">Media</a>
+    <a href="blogs.html">blogs</a>
+    <a href="#contact">Connect</a>
+  </div>
+</div>
+
+<!-- ===== HERO ===== -->
+<section class="hero">
+  <i class="fa-solid fa-graduation-cap cap" aria-hidden="true"></i>
+  <h1>Education & Professional Qualification</h1>
+  <p>Academic foundations, certifications, and ongoing contributions to logistics education and skill development.</p>
+</section>
+
+<!-- ===== CONTENT ===== -->
+<section class="wrap">
+  <div class="grid">
+
+    <!-- Card 1 -->
+    <article class="card">
+      <div class="head">
+        <span class="ico" aria-hidden="true"><i class="fa-solid fa-certificate"></i></span>
+        <h2>Academic & Professional Milestones</h2>
+      </div>
+      <p class="lead">Key qualifications and recognitions.</p>
+      <ul>
+        <li><strong>Certified Master Trainer</strong> — Logistics Sector Skill Council, Government of India.</li>
+        <li><strong>Certified Trainer</strong> — FIATA, Switzerland.</li>
+        <li><strong>International Entrepreneurial Learning Excellence</strong> — European Continental University.</li>
+      </ul>
+    </article>
+
+    <!-- Card 2 -->
+    <article class="card">
+      <div class="head">
+        <span class="ico" aria-hidden="true"><i class="fa-solid fa-chalkboard-user"></i></span>
+        <h2>Visiting Faculty Engagements</h2>
+      </div>
+      <p class="lead">Institutions taught and mentored.</p>
+      <ul>
+        <li>Gati Shakti Vishwavidyalaya</li>
+        <li>Gujarat Maritime University</li>
+        <li>Kaushalya — The Skill University</li>
+        <li>Indian Institute of Management Ahmedabad (IIMA)</li>
+        <li>Bank of Baroda</li>
+        <li>Bank of Maharashtra and other institutions</li>
+      </ul>
+    </article>
+
+    <!-- Card 3 -->
+    <article class="card">
+      <div class="head">
+        <span class="ico" aria-hidden="true"><i class="fa-brands fa-youtube"></i></span>
+        <h2>Education & Skill Promotion of Logistics</h2>
+      </div>
+      <p class="lead">Open learning platforms created and led.</p>
+      <ul>
+        <li><strong>JBS Academy YouTube:</strong> 650+ videos and ~28,000 subscribers.</li>
+        <li><strong>Logiveda:</strong> Self-paced learning on Customs, Air/Sea Cargo, Multimodal Transport, International Business.</li>
+      </ul>
+    </article>
+
+  </div>
+</section>
+
+<!-- ===== FOOTER ===== -->
+<footer id="contact" class="footer">
+  <div class="footwrap">
+    <div class="fitem"><i class="fa-solid fa-envelope" aria-hidden="true"></i><a href="mailto:samir@jbsacademy.com">samir@jbsacademy.com</a></div>
+    <div class="fitem"><i class="fa-solid fa-phone" aria-hidden="true"></i><a href="tel:+919574005089">+91 9574005089</a></div>
+    <div class="fitem"><i class="fa-brands fa-linkedin" aria-hidden="true"></i><a href="https://www.linkedin.com/in/samirjshah1/" target="_blank" rel="noopener">LinkedIn Profile</a></div>
+    <div class="fitem"><i class="fa-solid fa-location-dot" aria-hidden="true"></i><span>Ahmedabad, India</span></div>
+  </div>
+</footer>
+
+<!-- Reveal-on-scroll -->
+<script>
+const cards=[...document.querySelectorAll('.card')];
+function reveal(){
+  const trigger=innerHeight*0.9;
+  cards.forEach(c=>{ if(c.getBoundingClientRect().top<trigger) c.classList.add('visible'); });
+}
+addEventListener('load',reveal);
+addEventListener('scroll',reveal,{passive:true});
+</script>
+
+<!-- Page fade transition -->
+<div class="fade-overlay" aria-hidden="true"></div>
+<script>
+window.addEventListener('load',()=>{ document.body.classList.add('loaded'); });
+
+document.querySelectorAll('a[href]').forEach(a=>{
+  const href=a.getAttribute('href')||'';
+  const isHash=href.startsWith('#');
+  if(!isHash && !a.target){
+    a.addEventListener('click',e=>{
+      e.preventDefault();
+      document.querySelector('.fade-overlay').style.opacity='1';
+      setTimeout(()=>{ window.location.href=href; },400);
+    });
+  }
+});
+
+/* Mobile menu toggle without touching desktop */
+const toggle = document.getElementById('navToggle');
+const sheet  = document.getElementById('mobileMenu');
+function closeMenu(){ sheet.style.maxHeight='0px'; toggle.setAttribute('aria-expanded','false'); toggle.innerHTML='<i class="fa-solid fa-bars"></i>'; }
+function openMenu(){ sheet.style.maxHeight=sheet.scrollHeight+'px'; toggle.setAttribute('aria-expanded','true'); toggle.innerHTML='<i class="fa-solid fa-xmark"></i>'; }
+toggle?.addEventListener('click',()=>{ (toggle.getAttribute('aria-expanded')==='true') ? closeMenu() : openMenu(); });
+window.addEventListener('resize',()=>{ if(window.innerWidth>880) closeMenu(); },{passive:true});
+</script>
+
+</body>
+</html>

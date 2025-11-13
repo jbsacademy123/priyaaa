@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>In the News — JBS Academy</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+<style>
+:root{
+  --ink:#1f2937; --accent1:#F97316; --accent2:#EA580C;
+  --beige:#f2ebe3; --beige-border:#e2d9cf;
+  --card:#ffffff; --card-border:#e5e7eb;
+  --heroA:#FFF7ED; --heroB:#FFE7D3;
+  --graphite:#0B1220;
+}
+
+/* base */
+*{box-sizing:border-box;scroll-behavior:smooth}
+body{margin:0;color:var(--ink);font-family:'Poppins',system-ui,-apple-system,Segoe UI,Roboto,Arial;background:#fff}
+
+/* ===== CANONICAL HEADER (do not change) ===== */
+.topbar{background:#f2ebe3;border-bottom:1px solid var(--beige-border);position:sticky;top:0;z-index:40;box-shadow:0 2px 6px rgba(0,0,0,.05)}
+.nav{max-width:1180px;margin:0 auto;padding:16px 22px;display:flex;align-items:center}
+.brand{display:flex;align-items:center;gap:12px;color:#db6809;font-weight:800;font-size:1.3rem;text-decoration:none}
+.brand img{width:54px;height:54px;border-radius:50%;object-fit:cover;border:2px solid var(--accent1)}
+.navlinks{margin-left:auto;display:flex;gap:22px;flex-wrap:wrap}
+.navlinks a{color:var(--ink);text-decoration:none;font-weight:700;opacity:.85;transition:.25s}
+.navlinks a:hover{color:var(--accent1);opacity:1;text-decoration:none}
+
+/* hero */
+.hero{text-align:center;padding:86px 18px 56px;background:linear-gradient(120deg,var(--heroA),var(--heroB));background-size:200% 200%;animation:heroMove 10s ease infinite}
+@keyframes heroMove{0%{background-position:0% 50%}50%{background-position:100% 50%}100%{background-position:0% 50%}}
+.kicker{display:inline-block;font-size:12px;letter-spacing:.25em;text-transform:uppercase;color:#EF7F1B;background:#fef1e7;border:1px solid #fad5b7;padding:6px 10px;border-radius:999px;margin-bottom:12px}
+h1{margin:8px 0 10px;font:700 38px/1.14 "Playfair Display",serif;color:#1e293b}
+.sub{color:#475569;max-width:880px;margin:0 auto 18px}
+.cta{display:inline-flex;align-items:center;gap:10px;background:linear-gradient(90deg,var(--accent1),var(--accent2));color:#fff;border:0;border-radius:12px;padding:12px 18px;font-weight:800;box-shadow:0 8px 22px rgba(249,115,22,.28);transition:.2s}
+.cta:hover{transform:translateY(-2px);box-shadow:0 14px 30px rgba(249,115,22,.45)}
+
+/* grid */
+.section{padding:18px 12px 84px}
+.wrap{max-width:1280px;margin:0 auto}
+.mosaic{column-count:4;column-gap:18px}
+@media (max-width:1200px){.mosaic{column-count:3}}
+@media (max-width:820px){.mosaic{column-count:2}}
+@media (max-width:520px){.mosaic{column-count:1}}
+.card{break-inside:avoid;margin:0 0 18px;border-radius:14px;overflow:hidden;background:var(--card);border:1px solid var(--card-border);box-shadow:0 10px 28px rgba(0,0,0,.06);transform:translateY(24px);opacity:0;transition:transform .6s ease,opacity .6s ease,box-shadow .25s ease}
+.card.show{transform:translateY(0);opacity:1}
+.card:hover{box-shadow:0 18px 42px rgba(234,88,12,.18)}
+.thumb{position:relative;overflow:hidden;background:#fafafa}
+.thumb img{width:100%;height:auto;display:block;transform:scale(1.001);transition:transform .45s ease,filter .35s ease}
+.card:hover .thumb img{transform:scale(1.04)}
+.overlay{position:absolute;inset:0;display:flex;align-items:flex-end;justify-content:center;background:linear-gradient(180deg,rgba(0,0,0,0) 35%,rgba(0,0,0,.5));color:#fff;font-weight:800;padding:10px 12px;opacity:0;transition:opacity .3s ease}
+.card:hover .overlay{opacity:1}
+.caption{background:#fff;color:#0f172a;text-align:center;padding:10px 12px;font-weight:700;font-size:14px;border-top:2px solid var(--accent1);letter-spacing:.02em}
+
+/* lightbox */
+.lightbox{position:fixed;inset:0;z-index:60;display:none;align-items:center;justify-content:center;background:rgba(0,0,0,.85);padding:20px}
+.lightbox.open{display:flex}
+.lightbox img{max-width:min(1080px,95vw);max-height:90vh;border-radius:14px;background:#000;box-shadow:0 20px 60px rgba(0,0,0,.65)}
+.lightbox .close{position:absolute;top:16px;right:18px;font-size:28px;color:#fff;cursor:pointer;padding:8px 12px;border:1px solid rgba(255,255,255,.25);border-radius:12px;background:rgba(0,0,0,.35)}
+
+/* ===== CANONICAL FOOTER (do not change) ===== */
+.footer{background:var(--graphite);border-top:1px solid #182233;color:#d6dbe3;padding:44px 20px;margin-top:40px}
+.footer::before{content:"";position:absolute;left:0;top:0;right:0;height:3px;background:linear-gradient(90deg,var(--accent1),var(--accent2))}
+.footwrap{max-width:1180px;margin:0 auto;display:grid;gap:18px;grid-template-columns:repeat(auto-fit,minmax(260px,1fr))}
+.fitem{display:flex;align-items:center;gap:10px}
+.fitem i{color:var(--accent1)}
+.fitem a{color:#fff;text-decoration:none;font-weight:700}
+.fitem a:hover{color:#EA580C}
+.fitem span{color:#e7ebf2;font-weight:700}
+
+.backtop{position:fixed;right:16px;bottom:18px;width:42px;height:42px;border-radius:999px;border:0;cursor:pointer;display:grid;place-items:center;color:#fff;z-index:55;background:linear-gradient(90deg,var(--accent1),var(--accent2));box-shadow:0 10px 24px rgba(249,115,22,.35);opacity:0;transform:translateY(14px);transition:.25s}
+.backtop.show{opacity:1;transform:translateY(0)}
+
+/* No underline sitewide */
+a{text-decoration:none !important} a:hover{text-decoration:none !important}
+</style>
+</head>
+<body>
+
+<!-- ===== HEADER (exact) ===== -->
+<div class="topbar">
+  <div class="nav">
+    <a class="brand" href="index.html"><img src="Samir J. Shah photo.jpg" alt="SJS"><span>Samir J. Shah</span></a>
+    <nav class="navlinks">
+      <a href="about.html">About</a>
+      <a href="Affiliations.html">Affiliations</a>
+      <a href="books.html" id="nav-books">Books</a>
+      <a href="news.html" id="nav-media">Media</a>
+      <a href="blogs.html" id="nav-blogs">blogs</a>
+      <a href="#contact">Connect</a>
+    </nav>
+  </div>
+</div>
+
+<!-- hero -->
+<section class="hero">
+  <span class="kicker">Press & Features</span>
+  <h1>Coverage across India’s trade & logistics media</h1>
+  <p class="sub">Trusted by customs professionals, exporters–importers, corporates, students, and academics.</p>
+  <button class="cta" onclick="document.querySelector('#news').scrollIntoView({behavior:'smooth'})">
+    Explore Media Highlights <i class="fa-solid fa-arrow-down"></i>
+  </button>
+</section>
+
+<!-- grid -->
+<section id="news" class="section">
+  <div class="wrap">
+    <div class="mosaic" id="mosaic"></div>
+  </div>
+</section>
+
+<!-- lightbox -->
+<div class="lightbox" id="lightbox" aria-hidden="true">
+  <button class="close" aria-label="Close" onclick="closeLightbox()">✕</button>
+  <img id="lbImg" alt="">
+</div>
+
+<!-- ===== FOOTER (exact) ===== -->
+<footer id="contact" class="footer">
+  <div class="footwrap">
+    <div class="fitem"><i class="fa-solid fa-envelope"></i><a href="mailto:samir@jbsacademy.com">samir@jbsacademy.com</a></div>
+    <div class="fitem"><i class="fa-solid fa-phone"></i><a href="tel:+919574005089">+91 9574005089</a></div>
+    <div class="fitem"><i class="fa-brands fa-linkedin"></i><a href="https://www.linkedin.com/in/samirjshah1/" target="_blank">LinkedIn Profile</a></div>
+    <div class="fitem"><i class="fa-solid fa-location-dot"></i><span>Ahmedabad, India</span></div>
+  </div>
+</footer>
+
+<button class="backtop" id="backTop" aria-label="Back to top"><i class="fa-solid fa-arrow-up"></i></button>
+
+<script>
+/* Try both locations automatically:
+   - If this file is in the parent folder → use 'news/<file>'
+   - If this file is inside the news folder → use '<file>'
+*/
+const PREFIXES = ['news/', ''];
+const EXT      = ['jpg','png','jpeg','tif','tiff','gif','webp'];
+
+const ITEMS = [
+  { base:'11 Maritime Gateway - Human resources', title:'Maritime Gateway — Human Resources' },
+  { base:'12 Cargo Connect - EDI and Self Assesment - July 2012', title:'Cargo Connect — EDI & Self Assessment' },
+  { base:'12 Cargo Connect - Whatever I am is because of the logistics industry - May 2012', title:'Cargo Connect — Whatever I Am Is Because…' },
+  { base:'15 Current Skill Deficit and Challenges for Logi. Inds. - SCM Education - May', title:'Current Skill Deficit & Challenges' },
+  { base:'15 JBSAPL Releases book on CC - News Brief LINK - May', title:'JBSAPL Releases Book on Customs Clearance' },
+  { base:'100% placement in certificate course', title:'100% Placement in Certificate Course' },
+  { base:'AMA News October 2015', title:'AMA News — October 2015' },
+  { base:'AMENDMENTS IN CUSTOMS ACT-2017-DST-02nd MAY 2017', title:'Amendments in Customs Act — 2017' },
+  { base:'Article under Trade Agreement-Information on Import Export Trade', title:'Article under Trade Agreement — Import/Export' },
+  { base:'Cargo & Logistics - How to sail through Customs - Jan 2015', title:'Cargo & Logistics — How to Sail Through' },
+  { base:'Cargo Connect (May 2018) - Work to you Satisfaction, not someone Else\'s Satisfaction', title:'Cargo Connect — Cover (May 2018)' },
+  { base:'Cargo Connect Cover Story July 2014', title:'Cargo Connect — Cover Story (July 2014)' },
+  { base:'Cargo Talk ACAAI Guest Column - Sept. 2014', title:'CargoTalk — ACAAI Guest Column (Sept 2014)' },
+  { base:'Cargo Talk Article', title:'CargoTalk — Article' },
+  { base:'Cargo Talk- India Vietnam trade - Opportunities scope of growth and challenges', title:'CargoTalk — India–Vietnam Trade' },
+  { base:'CargoTalk - Face of the Month 2nd Page', title:'CargoTalk — Face of the Month (2nd page)' },
+  { base:'Cargotalk - Guest Column', title:'CargoTalk — Guest Column' },
+  { base:'CARGOTALK SEPTEMBER 2019', title:'CargoTalk — September 2019' },
+  { base:'Carrer Conect -  What the education system offers - May 2012', title:'Career Connect — What the Education System…' },
+  { base:'CGT TFA Cargotalk 6th Aug', title:'CGT TFA — CargoTalk (6th Aug)' },
+  { base:'CII transform industry', title:'CII — Transform Industry' },
+  { base:'Column of Mr. Samir J Shah on Understanding Impact of GST ', title:'Column by Mr. Samir J. Shah — Understanding…' },
+  { base:'Concor - Message', title:'Concor — Message' },
+  { base:'Coopetition New Mantra for Cargo Agents - CargoTalk ACAAI Guest Column - September', title:'Coopetition: New Mantra for Cargo Agents — CargoTalk' },
+  { base:'Crago Talk Freight forwarders with NCTF', title:'CargoTalk — Freight Forwarders with NCTF' },
+  { base:'CTL 2011 Conference JBSAPL', title:'CTL 2011 — JBSAPL Conference' },
+  { base:'DST - CHALR 2004 - 9 Aug.-12', title:'DST — CHALR 2004 (9 Aug–12)' },
+  { base:'DST Samir J. Shah 23.08.2016 (2)', title:'DST — Samir J. Shah (23-08-2016) (2)' },
+  { base:'DST Samir J. Shah 23.08.2016', title:'DST — Samir J. Shah (23-08-2016)' },
+  { base:'E-Way', title:'E-Way' },
+  { base:'EXIM - Tips on preparation & attempting the Exam under Regulation 8 of the CHALR 2OO4 to be conducted on September 5 - 9 Aug. 12', title:'EXIM — Tips on Preparation & Attempting' },
+  { base:'EXIM- 2025', title:'EXIM — 2025' },
+  { base:'Exim Press Release April 2015 - JBS Academy Releases book of CC', title:'Exim Press Release — April 2015 (JBS Academy)' },
+  { base:'FFFAI Chairman 2015-17 - JBS Group', title:'FFFAI Chairman (2015–17) — JBS Group' },
+  { base:'Gender Diversity', title:'Gender Diversity' },
+  { base:'Gujarat Maritime Board - 1', title:'Gujarat Maritime Board' },
+  { base:'Living your Legacy - June 6 2018', title:'Living Your Legacy — 6 June 2018' },
+  { base:'Marin lines _2018', title:'Marine Lines — 2018' },
+  { base:'Maritime gateway March 2015', title:'Maritime Gateway — March 2015' },
+  { base:'Maritime Gateway', title:'Maritime Gateway' },
+  { base:'Reg 6 Students', title:'Reg 6 Students' },
+  { base:'Reward for Exceptional Service', title:'Reward for Exceptional Service' },
+  { base:'Strategies to overcome competition in air cargo - Cargo Talk', title:'Strategies to Overcome Competition in Air Cargo — Sept 2023' },
+  { base:'WTO Pune', title:'WTO — Pune' },
+  { base:'cargo talk', title:'Cargo Talk' }
+];
+
+/* build grid */
+const grid = document.getElementById('mosaic');
+const tile = (it) => {
+  const srcs = [];
+  for (const p of PREFIXES) for (const e of EXT) srcs.push(`${p}${it.base}.${e}`);
+  return `
+    <figure class="card">
+      <a href="#" class="open" aria-label="${it.title}">
+        <div class="thumb">
+          <img data-srcs="${srcs.join('|')}" alt="${it.title}">
+          <div class="overlay">View image →</div>
+        </div>
+      </a>
+      <figcaption class="caption">${it.title}</figcaption>
+    </figure>`;
+};
+grid.innerHTML = ITEMS.map(tile).join('');
+
+/* load images with (prefix × extension) fallbacks */
+document.querySelectorAll('img[data-srcs]').forEach(img=>{
+  const list = img.getAttribute('data-srcs').split('|');
+  let i = 0;
+  const tryNext = ()=>{ if(i < list.length){ img.src = list[i++]; } };
+  img.addEventListener('error', tryNext);
+  tryNext();
+});
+
+/* scroll-in animation */
+const io = new IntersectionObserver((en)=>en.forEach(e=>{if(e.isIntersecting)e.target.classList.add('show')}),{threshold:.18});
+document.querySelectorAll('.card').forEach(c=>io.observe(c));
+
+/* lightbox */
+const lb = document.getElementById('lightbox');
+const lbImg = document.getElementById('lbImg');
+grid.addEventListener('click',(e)=>{
+  const a = e.target.closest('a.open'); if(!a) return;
+  e.preventDefault();
+  const imgEl = a.querySelector('img'); if(!imgEl || !imgEl.src) return;
+  lbImg.src = imgEl.currentSrc || imgEl.src;
+  lb.classList.add('open'); lb.setAttribute('aria-hidden','false');
+});
+function closeLightbox(){ lb.classList.remove('open'); lb.setAttribute('aria-hidden','true'); lbImg.src=''; }
+lb.addEventListener('click',(e)=>{ if(e.target===lb) closeLightbox(); });
+document.addEventListener('keydown',(e)=>{ if(e.key==='Escape') closeLightbox(); });
+
+/* back to top */
+const bt = document.getElementById('backTop');
+window.addEventListener('scroll',()=>{ if(scrollY>600) bt.classList.add('show'); else bt.classList.remove('show'); });
+bt.addEventListener('click',()=>window.scrollTo({top:0,behavior:'smooth'}));
+</script>
+</body>
+</html>

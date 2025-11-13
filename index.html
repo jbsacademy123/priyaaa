@@ -1,0 +1,735 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Samir J. Shah — Leadership in Logistics & Trade</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+
+<style>
+:root{
+  --graphite:#0B1220;           /* dark footer */
+  --ink:#1f2937;                /* main text */
+  --accent1:#F97316;            /* bright amber/orange */
+  --accent2:#EA580C;            /* deep orange-red */
+  --muted:#6b7280;
+  --softbg1:#FFF7ED;            /* warm cream */
+  --softbg2:#FFE7D3;            /* soft peach */
+  --deep:#0f2d57;               /* dark blue for Videos */
+  --beige:#f2ebe3;              /* header bg */
+  --beige-border:#e2d9cf;       /* header border */
+}
+
+/* Base */
+*{box-sizing:border-box;scroll-behavior:smooth}
+html,body{height:100%}
+body{
+  margin:0;
+  font-family:'Poppins',system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
+  color:var(--ink);
+  background:linear-gradient(180deg,var(--softbg1) 0%, var(--softbg2) 100%);
+  overflow-x:hidden;
+  -webkit-text-size-adjust:100%;
+}
+img{max-width:100%;height:auto;display:block}
+
+/* Remove underline sitewide */
+a{text-decoration:none !important}
+a:hover{text-decoration:none !important}
+
+/* ===== Top nav ===== */
+.topbar {
+  background:var(--beige);
+  border-bottom:1px solid var(--beige-border);
+  position:sticky; top:0; z-index:50;
+  box-shadow:0 2px 6px rgba(0,0,0,0.05);
+}
+.nav{
+  max-width:1180px;margin:0 auto;padding:12px 18px;
+  display:flex;align-items:center;gap:12px;
+}
+.brand{display:flex;align-items:center;gap:12px;color:#db6809;text-decoration:none;font-weight:800;font-size:1.25rem;line-height:1}
+.brand img{width:54px;height:54px;border-radius:50%;object-fit:cover;border:2px solid var(--accent1)}
+.brand span{white-space:nowrap}
+
+/* Desktop links */
+.navlinks{
+  margin-left:auto;display:flex;gap:22px;flex-wrap:wrap;align-items:center;
+}
+.navlinks a{
+  color:var(--ink);font-weight:700;opacity:.85;transition:.25s;
+  padding:8px 4px;border-radius:8px;outline:0;
+}
+.navlinks a:hover,
+.navlinks a:focus-visible{color:var(--accent1);opacity:1}
+
+/* Mobile toggle (hamburger) — hidden on desktop */
+.menu-toggle{
+  display:none;                 /* <-- important: hidden by default */
+  margin-left:auto;
+  background:#fff;border:1px solid var(--beige-border);
+  width:40px;height:40px;border-radius:10px;
+  place-items:center;cursor:pointer;
+  box-shadow:0 4px 12px rgba(0,0,0,.06);
+}
+.menu-toggle i{font-size:18px;color:#0b1220}
+.menu-toggle:focus-visible{outline:2px solid var(--accent1);outline-offset:3px}
+
+/* Mobile drawer menu */
+.mnav{
+  position:fixed;left:0;right:0;top:64px; /* sits below sticky header */
+  background:#fff;border-top:1px solid #eef0f3;
+  transform:translateY(-16px);opacity:0;pointer-events:none;
+  transition:.28s ease; z-index:49;
+  box-shadow:0 16px 30px rgba(0,0,0,.14);
+}
+.mnav.open{transform:translateY(0);opacity:1;pointer-events:auto}
+.mnav-inner{max-width:1180px;margin:0 auto;padding:10px 18px 16px}
+.mnav a{
+  display:block;padding:14px 10px;border-radius:12px;
+  border:1px solid #eef0f3;margin:8px 0;background:#fff;
+  color:#0b1220;font-weight:700;
+}
+.mnav a:hover{background:#0f172a;color:#fff;border-color:#0f172a}
+.moverlay{
+  position:fixed;inset:0;background:rgba(0,0,0,.25);
+  backdrop-filter:saturate(100%) blur(2px);
+  opacity:0;pointer-events:none;transition:opacity .25s ease;z-index:48;
+}
+.moverlay.show{opacity:1;pointer-events:auto}
+
+/* ===== HERO ===== */
+.hero{background:linear-gradient(180deg,var(--softbg1) 0%, var(--softbg2) 100%);padding:80px 20px 90px}
+.hero .wrap{
+  max-width:1180px;margin:0 auto;display:grid;
+  grid-template-columns:430px 1fr;gap:56px;align-items:center;
+}
+.media{position:relative;border-radius:18px;overflow:hidden;background:#fff;border:1px solid #f1efe9;box-shadow:0 20px 40px rgba(0,0,0,.08)}
+.media img{width:100%;border-radius:14px;position:relative;z-index:2;opacity:0;transform:translateX(-18px);animation:fadeInPhoto .9s ease-out .4s forwards}
+@keyframes fadeInPhoto{to{opacity:1;transform:translateX(0)}}
+.kicker{color:var(--accent1);letter-spacing:.14em;text-transform:uppercase;font-weight:800;font-size:.95rem;margin:0 0 10px}
+.hero-title{
+  font-family:'Playfair Display',serif;color:#1c2d57;
+  font-size:clamp(2.2rem,1rem + 3vw,3.6rem);line-height:1.12;margin:0 0 22px;position:relative;display:inline-block;
+}
+.hero-title::after{content:"";position:absolute;left:0;bottom:-8px;width:100%;height:3px;background:linear-gradient(90deg,var(--accent1),var(--accent2));border-radius:4px;animation:underlineMove 6s ease-in-out infinite}
+@keyframes underlineMove{0%{background-position:0% 50%}50%{background-position:100% 50%}100%{background-position:0% 50%}}
+.lead{color:#334155;max-width:62ch;margin:0 0 26px;font-size:1.05rem;line-height:1.7}
+
+/* CTA BUTTON – Sunset Glow */
+.cta{
+  display:inline-flex;align-items:center;gap:10px;
+  background:linear-gradient(90deg,#F97316,#EA580C); color:#fff;
+  font-weight:800;padding:14px 18px;border-radius:12px;border:none;
+  box-shadow:0 6px 20px rgba(249,115,22,0.35);
+  transform:translateY(18px);opacity:0;
+  animation:btnIn .9s ease-out 1.6s forwards, float 3.8s ease-in-out 2.6s infinite;
+  transition:transform .25s, box-shadow .25s, background .25s;
+}
+.cta:hover{background:linear-gradient(90deg,#EA580C,#F97316);transform:translateY(-3px) scale(1.03);box-shadow:0 14px 36px rgba(249,115,22,0.55)}
+@keyframes btnIn{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:translateY(0)}}
+@keyframes float{0%{transform:translateY(0)}50%{transform:translateY(-4px)}100%{transform:translateY(0)}}
+.cta:focus-visible{outline:3px solid #fff;box-shadow:0 0 0 4px #EA580C,0 6px 20px rgba(249,115,22,.4)}
+
+/* ===== GRID (cards) ===== */
+.grid-section{background:transparent;padding:90px 20px}
+.grid-wrap{
+  max-width:1180px;margin:0 auto;display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:22px;
+}
+.card{
+  background:rgba(255,255,255,0.95);border:1px solid #f1efe9;border-top:4px solid var(--accent1);
+  color:#0f172a;border-radius:16px;padding:24px;box-shadow:0 12px 30px rgba(0,0,0,.07);
+  opacity:0;transform:translateY(48px);transition:transform .6s ease-out, opacity .6s ease, box-shadow .3s ease, border-color .3s ease;
+  display:block
+}
+.card.visible{opacity:1;transform:translateY(0);animation:popGlow .5s ease forwards}
+@keyframes popGlow{from{box-shadow:0 0 0 rgba(0,0,0,0)}to{box-shadow:0 18px 40px rgba(234,88,12,.18)}}
+.card:hover{transform:translateY(-6px);box-shadow:0 20px 40px rgba(234,88,12,.22);border-top-color:var(--accent2)}
+.card i{font-size:26px;color:var(--accent1);margin-bottom:12px;transition:.3s}
+.card:hover i{transform:scale(1.08) rotate(3deg);color:var(--accent2)}
+.card h3{margin:0 0 8px;color:#0f172a;font-size:1.08rem;letter-spacing:.2px}
+.card p{margin:0;color:#475569;font-size:.95rem;line-height:1.6}
+.card.highlight{outline:3px solid var(--accent1);box-shadow:0 0 0 6px rgba(249,115,22,.15), 0 18px 40px rgba(0,0,0,.18);transform:scale(1.02)}
+
+/* ===== TRAINING (photo strip + runner) ===== */
+.section-title{
+  font-family:'Playfair Display',serif;
+  font-size:clamp(1.6rem,1.1rem + 2vw,3rem);
+  text-align:center; margin:28px auto 22px; color:#111827;
+}
+.section-title::after{
+  content:""; display:block; width:120px; height:4px; margin:14px auto 0;
+  background:linear-gradient(90deg,var(--accent1),var(--accent2)); border-radius:6px
+}
+.training{background:#fff;padding:40px 0 80px}
+.strip{overflow:hidden;background:#fff;border-top:1px solid #eee;border-bottom:1px solid #eee}
+.strip-track{--loopWidth:1500px; display:flex; gap:12px; align-items:center; padding:10px 12px; animation:strip-scroll 40s linear infinite}
+.strip img{height:200px; width:auto; border-radius:8px; object-fit:cover; box-shadow:0 6px 18px rgba(0,0,0,.08); border:1px solid #f1efe9}
+.strip:hover .strip-track{animation-play-state:paused}
+@keyframes strip-scroll{from{transform:translateX(0)} to{transform:translateX(calc(var(--loopWidth) * -1))}}
+
+.run-slider{--gap:14px; --height:340px; --speed: 45s; position:relative; max-width:1180px; margin:18px auto 0; padding:0 44px}
+.run-slider .track{display:flex; align-items:center; gap:var(--gap); overflow:hidden; position:relative; isolation:isolate}
+.run-slider img{height:var(--height); width:auto; flex:0 0 auto; object-fit:cover; border-radius:14px; background:#fff; border:1px solid #f1efe9; box-shadow:0 10px 26px rgba(0,0,0,.06); user-select:none; -webkit-user-drag:none}
+.run-slider .scroll{display:flex; gap:var(--gap); will-change:transform; animation:runner var(--speed) linear infinite}
+.run-slider:hover .scroll{ animation-play-state:paused }
+@keyframes runner{ from{transform:translateX(0)} to{transform:translateX(calc(var(--loopW, 2000px) * -1))} }
+.run-slider .nav{position:absolute; top:50%; transform:translateY(-50%); width:40px; height:40px; border-radius:50%; border:0; background:#ffffffcc; backdrop-filter:blur(4px); box-shadow:0 6px 16px rgba(0,0,0,.12); display:grid; place-items:center; cursor:pointer; font-size:20px; line-height:1; transition:.2s}
+.run-slider .nav:hover{ transform:translateY(-50%) scale(1.06) }
+.run-slider .prev{ left:6px } .run-slider .next{ right:6px }
+
+/* ===== VIDEOS (static grid + drawer) ===== */
+.videos-section{background:var(--deep);padding:80px 0}
+.videos-section .title{font-family:'Playfair Display',serif;text-align:center;font-size:clamp(1.6rem,1.1rem + 2vw,3rem);color:#fff;margin:0 0 10px}
+.videos-section .subtitle{color:#e6edf7;text-align:center;max-width:900px;margin:0 auto 24px;padding:0 18px}
+
+.video-grid{
+  max-width:1180px; margin:0 auto; padding:0 20px;
+  display:grid; grid-template-columns:repeat(3,1fr); gap:16px;
+}
+.video-card{
+  background:#fff;border-radius:16px;overflow:hidden;
+  border:1px solid #eef0f3; box-shadow:0 10px 24px rgba(0,0,0,.12);
+  display:flex; flex-direction:column; transition:transform .2s ease, box-shadow .2s ease;
+}
+.video-card:hover{ transform:translateY(-4px); box-shadow:0 16px 30px rgba(0,0,0,.16) }
+.video-card .vthumb{ position:relative; overflow:hidden }
+.video-card .vthumb img{ width:100%; height:200px; object-fit:cover; display:block; transition:transform .35s ease }
+.video-card:hover .vthumb img{ transform:scale(1.06) }
+.video-card h3{ font-size:1.02rem; margin:12px 14px 6px; color:#0b1220 }
+.video-card .vmeta{ color:#64748b; font-size:.92rem; margin:0 14px 16px }
+
+/* Buttons */
+.center{display:flex;justify-content:center;margin-top:18px;gap:10px;flex-wrap:wrap}
+.btn-primary{
+  background:linear-gradient(90deg,#F97316,#EA580C); color:#fff; border:none;
+  font-weight:800; padding:12px 18px; border-radius:10px; cursor:pointer;
+  box-shadow:0 6px 20px rgba(249,115,22,0.35); transition:transform .2s ease, box-shadow .2s ease;
+}
+.btn-primary:hover{ transform:translateY(-2px); box-shadow:0 12px 28px rgba(249,115,22,0.5) }
+.btn-primary:focus-visible{outline:3px solid #fff;box-shadow:0 0 0 4px #EA580C}
+.btn-ghost{
+  background:#ffffff; color:#0f172a; border:1px solid #e5e7eb;
+  font-weight:700; padding:10px 14px; border-radius:10px; cursor:pointer;
+  transition:background .2s, color .2s, border-color .2s;
+}
+.btn-ghost:hover{ background:#0f172a; color:#fff; border-color:#0f172a }
+
+/* Drawer */
+.drawer{ position:fixed; inset:0; pointer-events:none; z-index:60 }
+.drawer .overlay{ position:absolute; inset:0; background:rgba(0,0,0,.4); opacity:0; transition:opacity .25s ease }
+.drawer .panel{
+  position:absolute; left:0; right:0; bottom:-80vh; height:80vh;
+  background:#fff; border-top-left-radius:18px; border-top-right-radius:18px;
+  box-shadow:0 -12px 26px rgba(0,0,0,.25); transition:bottom .35s ease;
+  display:flex; flex-direction:column;
+}
+.drawer.open{ pointer-events:auto }
+.drawer.open .overlay{ opacity:1 }
+.drawer.open .panel{ bottom:0 }
+.drawer-header{
+  display:flex; align-items:center; justify-content:space-between;
+  padding:14px 18px; border-bottom:1px solid #eef0f3;
+}
+.drawer-header h3{ margin:0; font-size:1.1rem; color:#0b1220 }
+.drawer-body{ padding:16px 18px 24px; overflow:auto }
+.drawer-grid{ display:grid; grid-template-columns:repeat(3,1fr); gap:16px }
+
+/* ===== LinkedIn (single-line, auto-scroll, no fades) ===== */
+.linked-title{font-family:'Playfair Display',serif;text-align:center;font-size:clamp(1.6rem,1.1rem + 2vw,3rem);color:#0f2d57;margin:0 0 10px}
+.linked-sub{color:#4b5563;text-align:center;max-width:900px;margin:0 auto 24px;padding:0 18px}
+.marquee{ position:relative; overflow:hidden; max-width:1180px; margin:0 auto; padding:0 20px }
+.belt{ display:block; position:relative }
+
+/* renamed from .row to .li-row to avoid Bootstrap conflicts */
+.li-row{
+  --speed:55s; --roww:2000px;
+  display:flex; gap:14px; padding:12px 0;
+  will-change:transform; animation:li-scroll var(--speed) linear infinite;
+}
+.marquee:hover .li-row{ animation-play-state:paused }
+@keyframes li-scroll{ from{ transform: translateX(0) } to{ transform: translateX(calc(var(--roww) * -1)) } }
+
+.vcard{
+  min-width:300px; max-width:340px;
+  background:#fff; border-radius:16px; overflow:hidden;
+  border:1px solid #eef0f3; box-shadow:0 10px 24px rgba(0,0,0,.12);
+  display:flex; flex-direction:column;
+}
+.vthumb img{ width:100%; height:200px; object-fit:cover }
+.li-card .li-badge{position:absolute;left:10px;top:10px;background:#0a66c2;color:#fff;font-size:.75rem;padding:6px 8px;border-radius:999px;font-weight:700;box-shadow:0 4px 12px rgba(10,102,194,.35)}
+
+/* ===== Footer ===== */
+.footer{background:var(--graphite);border-top:1px solid #182233;color:#d6dbe3;padding:40px 20px;margin-top:40px}
+.footwrap{max-width:1180px;margin:0 auto;display:grid;gap:18px;grid-template-columns:repeat(auto-fit,minmax(220px,1fr))}
+.fitem{display:flex;align-items:center;gap:10px}
+.fitem i{color:var(--accent1)}
+.fitem a{color:#ffffff;font-weight:700}
+.fitem a:hover{color:#EA580C}
+.fitem span{color:#e7ebf2;font-weight:700}
+
+/* ===== Responsive ===== */
+@media (max-width:1180px){
+  .hero .wrap{gap:38px}
+}
+
+/* Mobile breakpoint */
+@media (max-width:900px){
+  /* Header: show hamburger, hide desktop links */
+  .nav{padding:12px 14px}
+  .navlinks{display:none}          /* hide desktop nav */
+  .menu-toggle{display:grid}       /* show hamburger only on mobile */
+
+  /* Reduce hero spacing and stack */
+  .hero{padding:48px 16px 56px}
+  .hero .wrap{grid-template-columns:1fr;gap:22px}
+  .media{order:2}
+  .hero .wrap > div:last-child{order:1}
+  .lead{font-size:1rem}
+
+  /* Cards grid tighter */
+  .grid-section{padding:56px 16px}
+  .grid-wrap{gap:16px;grid-template-columns:repeat(auto-fit,minmax(240px,1fr))}
+  .card{padding:18px}
+
+  /* Strip and runner smaller */
+  .strip img{height:160px}
+  .run-slider{--height:240px;padding:0 34px}
+  .run-slider .nav{width:36px;height:36px}
+
+  /* Videos grid 2 cols -> 1 col smaller */
+  .video-grid{grid-template-columns:repeat(2,1fr)}
+  .drawer-grid{grid-template-columns:repeat(2,1fr)}
+
+  /* LinkedIn cards a bit smaller */
+  .vcard{min-width:260px;max-width:280px}
+  .vthumb img{height:170px}
+}
+
+@media (max-width:600px){
+  .video-grid{grid-template-columns:1fr}
+  .drawer-grid{grid-template-columns:1fr}
+  .strip img{height:140px}
+  .run-slider{--height:200px;padding:0 28px}
+}
+
+/* Respect reduced motion */
+@media (prefers-reduced-motion: reduce){
+  *{animation:none !important; transition:none !important}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<div class="topbar" role="banner">
+  <div class="nav" role="navigation" aria-label="Main">
+    <a class="brand" href="#"><img src="Samir J. Shah photo.jpg" alt="Portrait of Samir J. Shah"><span>Samir J. Shah</span></a>
+
+    <!-- Desktop links -->
+    <nav class="navlinks" aria-label="Primary">
+      <a href="about.html">About</a>
+      <a href="Affiliations.html">Affiliations</a>
+      <a id="nav-books" href="#books-card">Books</a>
+      <a id="nav-media" href="#news-card">Media</a>
+      <a id="nav-blogs" href="blogs.html">Blogs</a>
+      <a href="#contact">Connect</a>
+    </nav>
+
+    <!-- Mobile hamburger -->
+    <button class="menu-toggle" id="menuToggle" aria-expanded="false" aria-controls="mnav" aria-label="Open menu">
+      <i class="fa-solid fa-bars"></i>
+    </button>
+  </div>
+</div>
+
+<!-- Mobile menu (hidden on desktop) -->
+<div class="moverlay" id="moverlay" hidden></div>
+<nav id="mnav" class="mnav" aria-label="Mobile" hidden>
+  <div class="mnav-inner">
+    <a href="about.html">About</a>
+    <a href="Affiliations.html">Affiliations</a>
+    <a href="#books-card" id="m-books">Books</a>
+    <a href="#news-card" id="m-media">Media</a>
+    <a href="blogs.html" id="m-blogs">Blogs</a>
+    <a href="#contact">Connect</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="wrap">
+    <div class="media"><img loading="lazy" src="Samir J. Shah photo.jpg" alt="Samir J. Shah"></div>
+    <div>
+      <h2 class="kicker"><span id="typewriter"></span></h2>
+      <h1 class="hero-title">Where <span class="word logistics">Logistics</span> Meets <span class="word leadership">Leadership</span>.</h1>
+      <p class="lead">Empowering India’s logistics & EXIM ecosystem through decades of expertise — shaping professionals, policies, and performance in international trade.</p>
+      <a class="cta" href="mailto:priyanka@jbsacademy.com?subject=Inquiry%20for%20Samir%20J.%20Shah&body=Hello%20Team%2C%0A%0AI%20would%20like%20to%20connect%20with%20Mr.%20Samir%20J.%20Shah%20regarding...%0A%0ARegards%2C%0A">
+        <i class="fa-solid fa-comments"></i> CONNECT WITH SAMIR J. SHAH <i class="fa-solid fa-arrow-right"></i>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- TRAINING SECTION -->
+<section id="police-training" class="training">
+  <div class="strip" data-autoscroll>
+    <div class="strip-track">
+      <img loading="lazy" src="images/p1.jpg" alt=""><img loading="lazy" src="images/p2.jpg" alt=""><img loading="lazy" src="images/p3.jpg" alt="">
+      <img loading="lazy" src="images/p4.jpg" alt=""><img loading="lazy" src="images/p5.jpg" alt=""><img loading="lazy" src="images/p6.jpg" alt="">
+      <img loading="lazy" src="images/p1.jpg" alt="" aria-hidden="true"><img loading="lazy" src="images/p2.jpg" alt="" aria-hidden="true"><img loading="lazy" src="images/p3.jpg" alt="" aria-hidden="true">
+      <img loading="lazy" src="images/p4.jpg" alt="" aria-hidden="true"><img loading="lazy" src="images/p5.jpg" alt="" aria-hidden="true"><img loading="lazy" src="images/p6.jpg" alt="" aria-hidden="true">
+    </div>
+  </div>
+
+  <h3 class="section-title">Awards</h3>
+
+  <div class="run-slider" id="runSlider" aria-label="Awards gallery">
+    <button class="nav prev" aria-label="Previous">&#10094;</button>
+    <div class="track">
+      <img loading="lazy" src="images/g1.jpg" alt=""><img loading="lazy" src="images/g2.jpg" alt=""><img loading="lazy" src="images/g3.jpg" alt="">
+      <img loading="lazy" src="images/g4.jpg" alt=""><img loading="lazy" src="images/g5.jpg" alt=""><img loading="lazy" src="images/g6.jpg" alt="">
+      <img loading="lazy" src="images/g7.jpg" alt=""><img loading="lazy" src="images/g8.jpg" alt=""><img loading="lazy" src="images/g9.jpg" alt="">
+    </div>
+    <button class="nav next" aria-label="Next">&#10095;</button>
+  </div>
+</section>
+
+<!-- CARDS GRID -->
+<section class="grid-section" id="sections">
+  <div class="grid-wrap">
+    <a class="card" href="education.html"><i class="fa-solid fa-graduation-cap"></i><h3>Education & Professional Qualification</h3><p>Academic and professional milestones shaping his journey.</p></a>
+    <a class="card" href="positions.html"><i class="fa-solid fa-user-tie"></i><h3>Positions held + Community work</h3><p>Leadership positions and voluntary contributions in logistics & trade.</p></a>
+    <a class="card" href="social-causes.html"><i class="fa-solid fa-hands-helping"></i><h3>Social causes</h3><p>Efforts dedicated to education, empowerment, and community service.</p></a>
+
+    <a id="books-card" class="card" href="books.html"><i class="fa-solid fa-book"></i><h3>Books / JBSAPL</h3><p>Publications authored and initiatives by JBS Academy Pvt. Ltd.</p></a>
+
+    <a class="card" href="curriculums.html"><i class="fa-solid fa-layer-group"></i><h3>Curriculums developed</h3><p>Specialized academic and industry-aligned programs designed and implemented.</p></a>
+    <a class="card" href="teachings.html"><i class="fa-solid fa-chalkboard-user"></i><h3>Teachings</h3><p>Knowledge sharing through lectures, mentorship, and training programs.</p></a>
+    <a class="card" href="conferences.html"><i class="fa-solid fa-microphone"></i><h3>Conventions, Conferences, Congresses</h3><p>Participation and presentations at national and international forums.</p></a>
+    <a id="blogs-card" class="card" href="blogs.html"><i class="fa-solid fa-pen-nib"></i><h3>Blog / Articles</h3><p>Published insights and opinions on logistics, policy, and trade trends.</p></a>
+
+    <a id="news-card" class="card" href="news.html"><i class="fa-solid fa-newspaper"></i><h3>In the news</h3><p>Media features, interviews, and news highlights of professional contributions.</p></a>
+  </div>
+</section>
+
+<!-- ======= VIDEOS (NEW STATIC + DRAWER) ======= -->
+<section class="videos-section">
+  <div class="wrap" style="max-width:1180px;margin:0 auto;">
+    <h2 class="title">Videos</h2>
+    <p class="subtitle">I share my guidance on logistics, customs, and international trade — transforming experience into strategic insight.</p>
+
+    <div class="video-grid" id="videosGrid"></div>
+
+    <div class="center">
+      <button class="btn-primary" id="viewMoreBtn"><i class="fa-solid fa-clapperboard"></i>&nbsp; View more</button>
+      <a class="btn-ghost" href="https://www.youtube.com/@JBSAcademy" target="_blank" rel="noopener">
+        <i class="fa-brands fa-youtube"></i>&nbsp; Open channel
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- Drawer -->
+<div class="drawer" id="videosDrawer" aria-hidden="true">
+  <div class="overlay" id="drawerOverlay"></div>
+  <div class="panel" role="dialog" aria-modal="true" aria-labelledby="drawerTitle">
+    <div class="drawer-header">
+      <h3 id="drawerTitle">All Videos</h3>
+      <button class="btn-ghost" id="drawerClose"><i class="fa-solid fa-xmark"></i>&nbsp; Close</button>
+    </div>
+    <div class="drawer-body">
+      <div class="drawer-grid" id="drawerGrid"></div>
+    </div>
+  </div>
+</div>
+
+<!-- ============ LINKEDIN (Marquee) ============ -->
+<section class="training" style="background:#fff">
+  <div class="wrap" style="max-width:1180px;margin:0 auto;">
+    <h2 class="linked-title">LinkedIn</h2>
+    <p class="linked-sub">Recent posts and appearances.</p>
+    <div class="marquee" id="liMarquee">
+      <div class="belt" id="liBelt"></div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer id="contact" class="footer">
+  <div class="footwrap">
+    <div class="fitem"><i class="fa-solid fa-envelope"></i><a href="mailto:samir@jbsacademy.com">samir@jbsacademy.com</a></div>
+    <div class="fitem"><i class="fa-solid fa-phone"></i><a href="tel:+919574005089">+91 9574005089</a></div>
+    <div class="fitem"><i class="fa-brands fa-linkedin"></i><a href="https://www.linkedin.com/in/samirjshah1/" target="_blank" rel="noopener">LinkedIn Profile</a></div>
+    <div class="fitem"><i class="fa-solid fa-location-dot"></i><span>Ahmedabad, India</span></div>
+  </div>
+</footer>
+
+<script>
+// ===== Typewriter =====
+const texts = ["Industry Leader", "Author", "Educator", "Speaker"];
+let tcount = 0, index = 0, currentText = "", letter = "";
+(function type(){
+  if (tcount === texts.length) tcount = 0;
+  currentText = texts[tcount];
+  letter = currentText.slice(0, ++index);
+  const el = document.getElementById("typewriter");
+  if (el) el.textContent = letter;
+  if (letter.length === currentText.length) {
+    setTimeout(() => { index = 0; tcount++; type(); }, 1200);
+  } else setTimeout(type, 100);
+})();
+
+// ===== Mobile menu =====
+const toggle = document.getElementById('menuToggle');
+const mnav = document.getElementById('mnav');
+const moverlay = document.getElementById('moverlay');
+function openMenu(){
+  mnav.hidden = false; moverlay.hidden = false;
+  requestAnimationFrame(()=>{ mnav.classList.add('open'); moverlay.classList.add('show'); });
+  toggle.setAttribute('aria-expanded','true'); toggle.setAttribute('aria-label','Close menu');
+  document.body.style.overflow='hidden';
+}
+function closeMenu(){
+  mnav.classList.remove('open'); moverlay.classList.remove('show');
+  toggle.setAttribute('aria-expanded','false'); toggle.setAttribute('aria-label','Open menu');
+  setTimeout(()=>{ mnav.hidden = true; moverlay.hidden = true; }, 200);
+  document.body.style.overflow='';
+}
+toggle?.addEventListener('click', ()=> (mnav.classList.contains('open')?closeMenu():openMenu()));
+moverlay?.addEventListener('click', closeMenu);
+window.addEventListener('keydown', (e)=>{ if(e.key==='Escape') closeMenu(); });
+// close on link click
+mnav?.addEventListener('click', e=>{ if(e.target.tagName==='A') closeMenu(); });
+
+// ===== Random reveal for cards =====
+const cards = document.querySelectorAll('.grid-section .card');
+function shuffle(a){let i=a.length,r;while(i){r=Math.floor(Math.random()*i--);[a[i],a[r]]=[a[r],a[i]];}return a;}
+function randomRevealOnScroll(){
+  const triggerPoint=window.innerHeight-150;
+  const section=document.querySelector('.grid-section');
+  if(!section) return;
+  const rect=section.getBoundingClientRect();
+  if(rect.top<triggerPoint&&rect.bottom>0){
+    const randomCards=shuffle([...cards]);
+    randomCards.forEach((card,i)=>{setTimeout(()=>card.classList.add('visible'),i*160);});
+    window.removeEventListener('scroll',randomRevealOnScroll);
+  }
+}
+window.addEventListener('scroll',randomRevealOnScroll);
+window.addEventListener('load',randomRevealOnScroll);
+
+// ===== Smooth looping width for the top photo strip =====
+(function(){
+  const track = document.querySelector('.strip-track');
+  if(!track) return;
+  const update = () => {
+    const half = Math.floor(track.children.length/2);
+    const total = Array.from(track.children).slice(0, half)
+      .reduce((w,img,i)=>w + img.getBoundingClientRect().width + (i?12:0), 0);
+    track.style.setProperty('--loopWidth', total + 'px');
+  };
+  const ro = new ResizeObserver(update);
+  ro.observe(track);
+  window.addEventListener('load', update);
+})();
+
+// ===== Autoplay runner (photos) =====
+(function(){
+  const wrap = document.getElementById('runSlider');
+  if(!wrap) return;
+  const track = wrap.querySelector('.track');
+  const imgs = Array.from(track.children);
+  const row1 = document.createElement('div');
+  row1.className = 'scroll';
+  imgs.forEach(el => row1.appendChild(el));
+  const row2 = row1.cloneNode(true);
+  track.appendChild(row1);
+  track.appendChild(row2);
+  function setLoopWidth(){
+    const gap = parseFloat(getComputedStyle(track).gap)||0;
+    const w = Array.from(row1.children).reduce((sum, el, i) => sum + el.getBoundingClientRect().width + (i?gap:0), 0);
+    row1.style.setProperty('--loopW', w+'px'); row2.style.setProperty('--loopW', w+'px');
+  }
+  new ResizeObserver(setLoopWidth).observe(track);
+  window.addEventListener('load', setLoopWidth);
+  function placeRows(){
+    const w = parseFloat(getComputedStyle(row1).getPropertyValue('--loopW')) || 0;
+    row1.style.transform = 'translateX(0)';
+    row2.style.transform = `translateX(${w}px)`;
+  }
+  window.addEventListener('load', placeRows); window.addEventListener('resize', placeRows);
+  const step = () => Math.min(400, (wrap.clientWidth/2));
+  wrap.querySelector('.prev').addEventListener('click', ()=> nudge(step()));
+  wrap.querySelector('.next').addEventListener('click', ()=> nudge(-step()));
+  function nudge(px){
+    [row1,row2].forEach(r=>{
+      r.style.animationPlayState = 'paused';
+      const cur = new DOMMatrixReadOnly(getComputedStyle(r).transform).m41 || 0;
+      const w = parseFloat(getComputedStyle(r).getPropertyValue('--loopW')) || 0;
+      let now = cur+px; if(now <= -w) now += 2*w; if(now >=  w) now -= 2*w;
+      r.style.transform = `translateX(${now}px)`; setTimeout(()=> r.style.animationPlayState = 'running', 50);
+    });
+  }
+})();
+
+/* ===== Data ===== */
+const VIDEOS = [
+  { id: "0e1uWIbHW_c", title: "Interview / Talk – Part 1" },
+  { id: "ltNothzpslY", title: "Interview / Talk – Part 2" },
+  { id: "a3MeV5i7oz0", title: "YouTube Shorts – Quick Clip", duration: "00:30" },
+  { id: "eu0lugAMgqk", title: "Logistics & Trade — Talk 1" },
+  { id: "TW-AKrOzmZ8", title: "Logistics Insight — YouTube Short" },
+  { id: "19A1z7BcJUc", title: "Logistics & Trade — Talk 2" }
+];
+
+const LI = [
+  { href:"https://www.linkedin.com/in/samirjshah1/", img:"linkedin/ln1.png", title:"Hanoi • Customs clearance • Freight forwarding" },
+  { href:"https://www.linkedin.com/in/samirjshah1/", img:"linkedin/ln2.png", title:"Hanoi • Air cargo • Air logistics" },
+  { href:"https://www.linkedin.com/in/samirjshah1/", img:"linkedin/ln3.png", title:"Corporate training • Speaker • Business growth" },
+  { href:"https://www.linkedin.com/in/samirjshah1/", img:"linkedin/ln4.png", title:"ACAAI • FIATA 2025 • Customs affairs" },
+  { href:"https://www.linkedin.com/in/samirjshah1/", img:"linkedin/ln5.png", title:"EXIM • International business • Export" },
+  { href:"https://www.linkedin.com/in/samirjshah1/", img:"linkedin/ln6.png", title:"RMS • Customs broker • Freight forwarding" }
+];
+
+/* ===== LinkedIn (single-line auto-scroll) ===== */
+function renderLI(p){
+  const a = document.createElement('a');
+  a.href = p.href; a.target='_blank'; a.rel='noopener';
+  a.className = 'vcard li-card';
+  a.innerHTML = `
+    <div class="vthumb">
+      <span class="li-badge">in</span>
+      <img loading="lazy" src="${p.img}" alt="${p.title}">
+    </div>
+    <h3>${p.title}</h3>
+    <p class="vmeta"><i class="fa-brands fa-linkedin"></i> Open on LinkedIn</p>
+  `;
+  return a;
+}
+
+function initSingleLineMarquee(beltEl, items, render, speedSeconds = 55){
+  if(!beltEl) return;
+
+  const row = document.createElement('div');
+  row.className = 'li-row';  // renamed from 'row'
+
+  // first set
+  const firstSet = items.map(render);
+  firstSet.forEach(el => row.appendChild(el));
+
+  // duplicate inside SAME row
+  const secondSet = items.map(render);
+  secondSet.forEach(el => row.appendChild(el));
+
+  beltEl.innerHTML = '';
+  beltEl.appendChild(row);
+
+  function measureWidth(){
+    const gap = parseFloat(getComputedStyle(row).gap) || 0;
+    const n = firstSet.length;
+    let width = 0;
+    for(let i=0;i<n;i++){
+      width += row.children[i].getBoundingClientRect().width + (i ? gap : 0);
+    }
+    row.style.setProperty('--roww', width + 'px');
+    row.style.setProperty('--speed', speedSeconds + 's');
+    beltEl.style.height = row.getBoundingClientRect().height + 'px';
+  }
+
+  window.addEventListener('load', measureWidth);
+  new ResizeObserver(measureWidth).observe(beltEl);
+}
+
+// Run marquee
+initSingleLineMarquee(document.getElementById('liBelt'), LI, renderLI, 55);
+
+/* ===== YouTube drawer style ===== */
+function renderVideoCard(v){
+  const a = document.createElement('a');
+  a.href = `https://www.youtube.com/watch?v=${v.id}`;
+  a.target = '_blank';
+  a.rel = 'noopener';
+  a.className = 'video-card';
+  a.innerHTML = `
+    <div class="vthumb">
+      <img loading="lazy" src="https://img.youtube.com/vi/${v.id}/mqdefault.jpg" alt="${v.title}">
+    </div>
+    <h3>${v.title}</h3>
+    <p class="vmeta">YouTube • Watch now${v.duration ? ' • ' + v.duration : ''}</p>
+  `;
+  return a;
+}
+
+(function(){
+  const grid = document.getElementById('videosGrid');
+  const viewMoreBtn = document.getElementById('viewMoreBtn');
+  const drawer = document.getElementById('videosDrawer');
+  const overlay = document.getElementById('drawerOverlay');
+  const closeBtn = document.getElementById('drawerClose');
+  const drawerGrid = document.getElementById('drawerGrid');
+
+  function renderTop3(){
+    grid.innerHTML = '';
+    VIDEOS.slice(0,3).forEach(v => grid.appendChild(renderVideoCard(v)));
+  }
+  function renderAll(){
+    drawerGrid.innerHTML = '';
+    VIDEOS.forEach(v => drawerGrid.appendChild(renderVideoCard(v)));
+  }
+  function openDrawer(){ renderAll(); drawer.classList.add('open'); drawer.setAttribute('aria-hidden','false'); }
+  function closeDrawer(){ drawer.classList.remove('open'); drawer.setAttribute('aria-hidden','true'); }
+
+  viewMoreBtn?.addEventListener('click', openDrawer);
+  overlay?.addEventListener('click', closeDrawer);
+  closeBtn?.addEventListener('click', closeDrawer);
+  window.addEventListener('keydown', (e)=>{ if(e.key === 'Escape') closeDrawer(); });
+
+  renderTop3();
+})();
+
+/* =========================
+   NAV → CARD HIGHLIGHTING
+   ========================= */
+function setupNavHighlighter(navSelector, cardSelector){
+  const nav = document.querySelector(navSelector);
+  const card = document.querySelector(cardSelector);
+  if(!nav || !card) return;
+
+  nav.addEventListener('click', ()=>{
+    setTimeout(()=>{
+      card.classList.add('visible');
+      document.querySelectorAll('.grid-section .card.highlight')
+        .forEach(c => c.classList.remove('highlight'));
+      card.classList.add('highlight');
+      card.scrollIntoView({behavior:'smooth', block:'center'});
+      setTimeout(()=> card.classList.remove('highlight'), 3000);
+    }, 50);
+  });
+}
+setupNavHighlighter('#nav-books', '#books-card');
+setupNavHighlighter('#nav-media', '#news-card');
+
+/* Also map the mobile menu anchors to highlight the same cards */
+setupNavHighlighter('#m-books', '#books-card');
+setupNavHighlighter('#m-media', '#news-card');
+
+window.addEventListener('load', ()=>{
+  const h = location.hash;
+  if(h === '#books-card') document.querySelector('#nav-books')?.click();
+  if(h === '#news-card')  document.querySelector('#nav-media')?.click();
+  
+  // Videos top grid
+  const grid = document.getElementById('videosGrid');
+  if (grid && grid.children.length === 0) {
+    const frag = document.createDocumentFragment();
+    VIDEOS.slice(0,3).forEach(v => frag.appendChild(renderVideoCard(v)));
+    grid.appendChild(frag);
+  }
+});
+</script>
+</body>
+</html>

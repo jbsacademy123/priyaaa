@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Positions Held & Community Work — Samir J. Shah</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+
+<style>
+:root{
+  --graphite:#0B1220;
+  --ink:#1f2937;
+  --accent1:#F97316;
+  --accent2:#EA580C;
+  --muted:#6b7280;
+  --softbg1:#FFF7ED;
+  --softbg2:#FFE7D3;
+  --card:#ffffff;
+  --stroke:#eee6dd;
+  --beige:#f2ebe3; 
+  --beige-border:#e2d9cf;
+}
+
+/* RESET */
+*{box-sizing:border-box;margin:0;padding:0;scroll-behavior:smooth}
+img{max-width:100%;display:block;border:0}
+a{text-decoration:none}
+
+/* BASE */
+body{
+  font-family:'Poppins',system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
+  background:linear-gradient(180deg,var(--softbg1) 0%,var(--softbg2) 100%);
+  color:var(--ink);
+  line-height:1.6;
+  overflow-x:hidden;
+}
+
+/* ===== CANONICAL TOPBAR (desktop) ===== */
+.topbar{
+  background:var(--beige);
+  border-bottom:1px solid var(--beige-border);
+  position:sticky; top:0; z-index:1000;
+  box-shadow:0 2px 6px rgba(0,0,0,0.05);
+}
+.nav{max-width:1180px;margin:0 auto;padding:16px 22px;display:flex;align-items:center;gap:12px}
+.brand{display:flex;align-items:center;gap:12px;color:#db6809;font-weight:800;font-size:1.3rem}
+.brand img{width:54px;height:54px;border-radius:50%;object-fit:cover;border:2px solid var(--accent1)}
+.navlinks{margin-left:auto;display:flex;gap:22px;flex-wrap:wrap}
+.navlinks a{color:var(--ink);font-weight:700;opacity:.85;transition:.25s}
+.navlinks a:hover{color:var(--accent1);opacity:1}
+
+/* Mobile trigger (hidden on desktop) */
+.menu-toggle{
+  margin-left:auto;width:42px;height:38px;border:0;border-radius:10px;cursor:pointer;
+  background:#fff;box-shadow:0 2px 8px rgba(0,0,0,.08);display:none;place-items:center;
+}
+.menu-toggle i{font-size:18px;color:#0b1220}
+
+/* ===== MOBILE NAV DRAWER ===== */
+@media (max-width:860px){
+  .menu-toggle{display:grid}
+  /* hide desktop inline links on mobile, convert to drawer */
+  .navlinks{
+    position:fixed; left:0; right:0; bottom:0;
+    background:#fff; border-top-left-radius:16px; border-top-right-radius:16px;
+    box-shadow:0 -16px 40px rgba(0,0,0,.2);
+    padding:16px 18px 20px; gap:10px;
+    transform:translateY(110%); transition:transform .28s ease;
+    display:grid; grid-template-columns:1fr 1fr; z-index:1001;
+  }
+  .navlinks a{
+    padding:12px 10px;border:1px solid #eef0f3;border-radius:10px;text-align:center;color:var(--ink);font-weight:700
+  }
+  .navlinks.open{ transform:translateY(0) }
+
+  /* dim background when drawer open */
+  .nav-overlay{
+    position:fixed; inset:0; background:rgba(0,0,0,.25); z-index:1000;
+    opacity:0; pointer-events:none; transition:opacity .25s ease;
+  }
+  .nav-overlay.show{opacity:1; pointer-events:auto}
+}
+
+/* ===== HERO ===== */
+.hero{text-align:center;padding:80px 20px;background:linear-gradient(180deg,var(--softbg1),#fff)}
+.hero .cap{font-size:42px;color:var(--accent1);margin-bottom:12px}
+.hero h1{font-family:'Playfair Display',serif;font-size:clamp(2rem,1.2rem + 2vw,3rem);margin-bottom:10px;color:#1c2d57}
+.hero p{color:#475569;max-width:760px;margin:0 auto 18px;font-size:1.06rem}
+
+/* ===== CONTENT ===== */
+.wrap{max-width:1100px;margin:0 auto;padding:40px 20px 60px}
+.grid{display:grid;grid-template-columns:1fr;gap:18px}
+@media (min-width:880px){ .grid{grid-template-columns:1fr 1fr} }
+
+.card{
+  background:var(--card); border:1px solid var(--stroke); border-radius:16px;
+  padding:22px 22px 20px; box-shadow:0 10px 26px rgba(0,0,0,.06);
+  opacity:0; transform:translateY(28px); transition:opacity .6s ease, transform .6s ease, box-shadow .25s ease, border-color .25s ease;
+}
+.card.visible{opacity:1; transform:translateY(0)}
+.card:hover{box-shadow:0 16px 40px rgba(234,88,12,.16); border-color:#ead9c7}
+
+.card .head{display:flex;align-items:center;gap:12px;margin-bottom:8px}
+.card .head .ico{width:38px;height:38px;border-radius:10px;display:grid;place-items:center;background:#fff2e9;border:1px solid #ffd7bf;color:var(--accent2)}
+.card h2{font-size:1.1rem;margin:0;color:#0f172a}
+.card p.lead{color:#475569;margin:2px 0 10px;font-size:.98rem}
+
+.card ul{list-style:none;margin:6px 0 0;padding-left:0}
+.card li{padding-left:22px;margin:8px 0;position:relative}
+.card li::before{content:"•";position:absolute;left:0;top:0;color:var(--accent1);font-weight:800}
+
+/* ===== CANONICAL FOOTER (exact) ===== */
+.footer{
+  background:var(--graphite);
+  border-top:1px solid #182233;
+  color:#d6dbe3;
+  padding:44px 20px;
+  margin-top:40px;
+  position:relative;
+}
+.footer::before{
+  content:""; position:absolute; left:0; top:0; right:0; height:3px;
+  background:linear-gradient(90deg,var(--accent1),var(--accent2));
+}
+.footwrap{max-width:1180px;margin:0 auto;display:grid;gap:18px;grid-template-columns:repeat(auto-fit,minmax(260px,1fr))}
+.fitem{display:flex;align-items:center;gap:10px}
+.fitem i{color:var(--accent1)}
+.fitem a{color:#ffffff;font-weight:700}
+.fitem a:hover{color:#EA580C}
+.fitem span{color:#e7ebf2;font-weight:700}
+
+/* Page transition overlay */
+.fade-overlay {
+  position: fixed; inset: 0; background: #fff; z-index: 9999;
+  opacity: 1; pointer-events: none; transition: opacity .6s ease;
+}
+body.loaded .fade-overlay { opacity: 0; }
+
+/* ===== UNIFORM HERO HEADER STYLE (SAME FOR ALL PAGES) ===== */
+.hero {
+  text-align: center;
+  padding: 72px 20px; /* consistent spacing top-bottom */
+  background: linear-gradient(180deg, var(--softbg1), #fff);
+}
+
+.hero .cap {
+  font-size: 42px;
+  color: var(--accent1);
+  margin-bottom: 10px;
+}
+
+.hero h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(1.8rem, 1.1rem + 2.4vw, 3rem); /* scales nicely */
+  margin-bottom: 8px;
+  color: #1c2d57;
+}
+
+.hero p {
+  color: #475569;
+  max-width: 760px;
+  margin: 0 auto 18px;
+  font-size: clamp(.98rem, .9rem + .4vw, 1.06rem);
+}
+
+</style>
+</head>
+<body>
+
+<!-- dimmer for mobile drawer -->
+<div class="nav-overlay" aria-hidden="true"></div>
+
+<!-- ===== HEADER ===== -->
+<div class="topbar">
+  <div class="nav">
+    <a class="brand" href="index.html">
+      <img src="Samir J. Shah photo.jpg" alt="SJS"><span>Samir J. Shah</span>
+    </a>
+
+    <!-- appears ONLY on mobile -->
+ <button class="menu-toggle" aria-label="Menu" aria-expanded="false">
+  <i class="fa-solid fa-bars"></i>
+</button>
+
+
+    <nav class="navlinks" id="mobileNav" aria-label="Primary">
+      <a href="about.html">About</a>
+      <a href="Affiliations.html">Affiliations</a>
+      <a href="books.html">Books</a>
+      <a href="news.html">Media</a>
+      <a href="blogs.html">Blogs / Articles</a>
+      <a href="#contact">Connect</a>
+    </nav>
+  </div>
+</div>
+
+<!-- ===== HERO ===== -->
+<section class="hero">
+  <i class="fa-solid fa-briefcase cap"></i>
+  <h1>Positions Held & Community Work</h1>
+  <p>Leadership positions and voluntary contributions in logistics, trade, and education.</p>
+</section>
+
+<!-- ===== CONTENT ===== -->
+<section class="wrap">
+  <div class="grid">
+
+    <!-- Card 1 -->
+    <article class="card">
+      <div class="head">
+        <span class="ico"><i class="fa-solid fa-user-tie"></i></span>
+        <h2>Leadership Roles</h2>
+      </div>
+      <p class="lead">National and international positions held in logistics and trade organizations.</p>
+      <ul>
+        <li><strong>Vice Chairman</strong> — Custom Affairs Institute, FIATA Switzerland; FIATA RAP</li>
+        <li><strong>President</strong> — Air Cargo Agents Association of India</li>
+        <li><strong>Member</strong> — Advisory Board, Gujarat Maritime Cluster (Govt. of Gujarat)</li>
+        <li><strong>Member</strong> — Logistics Task Force on Skill Development (MSDE, Govt. of India)</li>
+        <li><strong>Governing / Managing Committee Member</strong> — CILT India, FICCI Gujarat, JITO Ahmedabad, Dr. Jaimin Vasa MSME Chair (Gujarat University)</li>
+        <li><strong>Board of Studies Member</strong> — Atmiya University, Kaushalya – The Skill University, B.K. School of Management (Gujarat University), Gati Shakti Vishwavidyalaya</li>
+        <li><strong>Partner & Chair</strong> — Social Venture Partners, Ahmedabad</li>
+      </ul>
+    </article>
+
+    <!-- Card 2 -->
+    <article class="card">
+      <div class="head">
+        <span class="ico"><i class="fa-solid fa-people-group"></i></span>
+        <h2>Community & Institutional Contributions</h2>
+      </div>
+      <p class="lead">Past and present contributions to the logistics, EXIM, and academic ecosystem.</p>
+      <ul>
+        <li><strong>Former Member</strong> — National Committee on Trade Facilitation (Cabinet Secretary, Govt. of India)</li>
+        <li><strong>Former Member</strong> — Logistics Skill Council (Ministry of Skill Development)</li>
+        <li><strong>Past Chairman</strong> — Federation of Freight Forwarders Associations in India (FFFAI)</li>
+        <li><strong>Former President</strong> — EXIM Club</li>
+        <li><strong>Former President</strong> — Indo–American Chamber of Commerce (British Business Group)</li>
+        <li><strong>Former President</strong> — British Business Group Ahmedabad</li>
+        <li><strong>Former President</strong> — Indo–China Chamber of Commerce, Gujarat</li>
+      </ul>
+    </article>
+
+  </div>
+</section>
+
+<!-- ===== FOOTER (exact 4 items) ===== -->
+<footer id="contact" class="footer">
+  <div class="footwrap">
+    <div class="fitem"><i class="fa-solid fa-envelope"></i><a href="mailto:samir@jbsacademy.com">samir@jbsacademy.com</a></div>
+    <div class="fitem"><i class="fa-solid fa-phone"></i><a href="tel:+919574005089">+91 9574005089</a></div>
+    <div class="fitem"><i class="fa-brands fa-linkedin"></i><a href="https://www.linkedin.com/in/samirjshah1/" target="_blank" rel="noopener">LinkedIn Profile</a></div>
+    <div class="fitem"><i class="fa-solid fa-location-dot"></i><span>Ahmedabad, India</span></div>
+  </div>
+</footer>
+
+<!-- Page Fade Transition -->
+<div class="fade-overlay"></div>
+
+<script>
+/* page fade */
+window.addEventListener('load',()=>document.body.classList.add('loaded'));
+document.querySelectorAll('a[href]').forEach(a=>{
+  const href=a.getAttribute('href')||'';
+  const isHash = href.startsWith('#');
+  if(!isHash && !a.target){
+    a.addEventListener('click',e=>{
+      e.preventDefault();
+      document.querySelector('.fade-overlay').style.opacity='1';
+      setTimeout(()=>{window.location.href=href},400);
+    });
+  }
+});
+
+/* reveal cards on scroll */
+const cards=[...document.querySelectorAll('.card')];
+function reveal(){
+  const t=innerHeight*0.9;
+  cards.forEach(c=>{ if(c.getBoundingClientRect().top<t) c.classList.add('visible'); });
+}
+addEventListener('load',reveal);
+addEventListener('scroll',reveal,{passive:true});
+
+/* mobile drawer logic */
+const menuBtn = document.querySelector('.menu-toggle');
+const nav = document.getElementById('mobileNav');
+const overlay = document.querySelector('.nav-overlay');
+
+function closeNav(){
+  nav.classList.remove('open');
+  overlay.classList.remove('show');
+  menuBtn?.setAttribute('aria-expanded','false');
+}
+
+menuBtn?.addEventListener('click', ()=>{
+  const isOpen = nav.classList.toggle('open');
+  overlay.classList.toggle('show', isOpen);
+  menuBtn.setAttribute('aria-expanded', String(isOpen));
+});
+
+overlay?.addEventListener('click', closeNav);
+
+window.addEventListener('keydown', e=>{
+  if(e.key==='Escape') closeNav();
+});
+
+/* close after tapping a link */
+document.querySelectorAll('#mobileNav a').forEach(a=>{
+  a.addEventListener('click', closeNav);
+});
+</script>
+
+</body>
+</html>

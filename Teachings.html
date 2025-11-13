@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Teachings — Samir J. Shah</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+
+<style>
+:root{
+  --graphite:#0B1220;
+  --ink:#1f2937;
+  --accent1:#F97316;
+  --accent2:#EA580C;
+  --softbg1:#FFF7ED;
+  --softbg2:#FFE7D3;
+  --stroke:#e2d9cf;
+}
+
+/* reset */
+*{box-sizing:border-box;margin:0;padding:0}
+a{text-decoration:none;color:inherit}
+body{
+  font-family:'Poppins',system-ui,Segoe UI,Arial,sans-serif;
+  line-height:1.6; color:var(--ink);
+  background:linear-gradient(180deg,var(--softbg1),var(--softbg2));
+  overflow-x:hidden;
+}
+
+/* ===== Canonical Header (beige topbar) ===== */
+.topbar{
+  position:sticky; top:0; z-index:1000;
+  background:#f2ebe3; border-bottom:1px solid var(--stroke);
+  box-shadow:0 2px 6px rgba(0,0,0,.05);
+}
+.nav{max-width:1180px;margin:0 auto;padding:16px 22px;display:flex;align-items:center;gap:12px}
+.brand{display:flex;align-items:center;gap:12px;color:#db6809;font-weight:800;font-size:1.3rem}
+.brand img{width:54px;height:54px;border-radius:50%;object-fit:cover;border:2px solid var(--accent1)}
+
+/* desktop links */
+.navlinks{margin-left:auto;display:flex;gap:22px;flex-wrap:wrap}
+.navlinks a{color:var(--ink);font-weight:700;opacity:.85;transition:.25s}
+.navlinks a:hover{color:var(--accent1);opacity:1}
+
+/* mobile trigger (hidden on desktop) */
+.menu-toggle{
+  margin-left:auto;width:42px;height:38px;border:0;border-radius:10px;cursor:pointer;
+  background:#fff;box-shadow:0 2px 8px rgba(0,0,0,.08);display:none;place-items:center;
+}
+.menu-toggle i{font-size:18px;color:#0b1220}
+
+/* mobile drawer + overlay */
+@media (max-width:860px){
+  .menu-toggle{display:grid}
+  .navlinks{
+    position:fixed; left:0; right:0; bottom:0;
+    background:#fff; border-top-left-radius:16px; border-top-right-radius:16px;
+    box-shadow:0 -16px 40px rgba(0,0,0,.2);
+    padding:16px 18px 20px; gap:10px;
+    transform:translateY(110%); transition:transform .28s ease;
+    display:grid; grid-template-columns:1fr 1fr; z-index:1001;
+  }
+  .navlinks a{
+    padding:12px 10px;border:1px solid #eef0f3;border-radius:10px;text-align:center;color:var(--ink);font-weight:700
+  }
+  .navlinks.open{ transform:translateY(0) }
+  .nav-overlay{
+    position:fixed; inset:0; background:rgba(0,0,0,.25); z-index:1000;
+    opacity:0; pointer-events:none; transition:opacity .25s ease;
+  }
+  .nav-overlay.show{opacity:1; pointer-events:auto}
+}
+
+/* hero */
+.hero{
+  text-align:center; padding:72px 20px;
+  background:linear-gradient(180deg,var(--softbg1),#fff);
+}
+.hero i{ font-size:40px; color:var(--accent1) }
+.hero h1{
+  font-family:'Playfair Display',serif;
+  font-size:clamp(2rem,1.2rem+2vw,3rem);
+  color:#1c2d57; margin:8px 0;
+}
+.hero p{ color:#475569; max-width:820px; margin:0 auto }
+
+/* grid */
+.wrap{ max-width:1180px; margin:0 auto; padding:36px 20px 70px }
+.grid{ display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:20px }
+.card{
+  background:#fff; border:1px solid #f1e7db; border-radius:16px;
+  box-shadow:0 10px 24px rgba(0,0,0,.06);
+  overflow:hidden; display:flex; flex-direction:column; transition:.3s ease;
+}
+.card:hover{ transform:translateY(-4px); box-shadow:0 16px 40px rgba(234,88,12,.18) }
+
+/* image area */
+.cover{ aspect-ratio:3 / 2; overflow:hidden; border-bottom:1px solid #f3e6d8; background:#fff7f0; display:grid; place-items:center }
+.cover img{ width:100%; height:100%; object-fit:cover; display:block; transition:transform .3s ease }
+.card:hover img{ transform:scale(1.05) }
+
+/* text area */
+.meta{ padding:14px 16px; text-align:center }
+.meta h3{ margin:0 0 6px; font-size:1.05rem; color:#0f172a }
+.meta p{ margin:0; color:#4b5563; font-size:.95rem }
+
+/* ===== Canonical Footer (graphite) ===== */
+.footer{
+  background:var(--graphite); border-top:1px solid #182233;
+  color:#d6dbe3; padding:40px 20px; margin-top:40px;
+}
+.footwrap{ max-width:1180px; margin:0 auto; display:grid; gap:18px; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)) }
+.fitem{ display:flex; align-items:center; gap:10px }
+.fitem i{ color:var(--accent1) }
+.fitem a{ color:#fff; font-weight:700 }
+.fitem a:hover{ color:#EA580C }
+
+/* ===== UNIFORM HERO HEADER STYLE (SAME FOR ALL PAGES) ===== */
+.hero {
+  text-align: center;
+  padding: 72px 20px; /* consistent spacing top-bottom */
+  background: linear-gradient(180deg, var(--softbg1), #fff);
+}
+
+.hero .cap {
+  font-size: 42px;
+  color: var(--accent1);
+  margin-bottom: 10px;
+}
+
+.hero h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(1.8rem, 1.1rem + 2.4vw, 3rem); /* scales nicely */
+  margin-bottom: 8px;
+  color: #1c2d57;
+}
+
+.hero p {
+  color: #475569;
+  max-width: 760px;
+  margin: 0 auto 18px;
+  font-size: clamp(.98rem, .9rem + .4vw, 1.06rem);
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- dimmer for mobile drawer -->
+<div class="nav-overlay" aria-hidden="true"></div>
+
+<!-- ===== Header (canonical) ===== -->
+<div class="topbar">
+  <div class="nav">
+    <a class="brand" href="index.html">
+      <img src="Samir J. Shah photo.jpg" alt="SJS"><span>Samir J. Shah</span>
+    </a>
+
+    <!-- Mobile hamburger -->
+    <button class="menu-toggle" aria-label="Menu" aria-expanded="false">
+      <i class="fa-solid fa-bars"></i>
+    </button>
+
+    <nav class="navlinks" id="mobileNav" aria-label="Primary">
+      <a href="about.html">About</a>
+      <a href="Affiliations.html">Affiliations</a>
+      <a href="books.html">Books</a>
+      <a href="news.html">Media</a>
+      <a href="blogs.html">Blogs / Articles</a>
+      <a href="index.html#contact">Connect</a>
+    </nav>
+  </div>
+</div>
+
+<!-- hero -->
+<section class="hero">
+  <i class="fa-solid fa-chalkboard-user"></i>
+  <h1>Teachings</h1>
+  <p>Knowledge sharing through lectures, mentorship, and academic programs — shaping future logistics leaders.</p>
+</section>
+
+<!-- grid -->
+<section class="wrap">
+  <div class="grid">
+
+    <!-- Card 1 -->
+    <article class="card">
+      <div class="cover">
+        <img src="teachings/lectures.jpg"
+             alt="Guest Lectures"
+             onerror="this.onerror=null;this.src='teachings/placeholder.jpg';">
+      </div>
+      <div class="meta">
+        <h3>Guest Lectures</h3>
+      </div>
+    </article>
+
+    <!-- Card 2 -->
+    <article class="card">
+      <div class="cover">
+        <img src="teachings/faculty.jpeg"
+             alt="Faculty Development Programs"
+             onerror="this.onerror=null;this.src='teachings/placeholder.jpeg';">
+      </div>
+      <div class="meta">
+        <h3>Faculty Development Programs</h3>
+      </div>
+    </article>
+
+    <!-- Card 3 -->
+    <article class="card">
+      <div class="cover">
+        <img src="teachings/webinars.jpg"
+             alt="Webinars and Workshops"
+             onerror="this.onerror=null;this.src='teachings/placeholder.jpg';">
+      </div>
+      <div class="meta">
+        <h3>Webinars & Workshops</h3>
+      </div>
+    </article>
+
+  </div>
+</section>
+
+<!-- ===== Footer (canonical: 4 items only) ===== -->
+<footer id="contact" class="footer">
+  <div class="footwrap">
+    <div class="fitem"><i class="fa-solid fa-envelope"></i><a href="mailto:samir@jbsacademy.com">samir@jbsacademy.com</a></div>
+    <div class="fitem"><i class="fa-solid fa-phone"></i><a href="tel:+919574005089">+91 9574005089</a></div>
+    <div class="fitem"><i class="fa-brands fa-linkedin"></i><a href="https://www.linkedin.com/in/samirjshah1/" target="_blank" rel="noopener">LinkedIn Profile</a></div>
+    <div class="fitem"><i class="fa-solid fa-location-dot"></i><span>Ahmedabad, India</span></div>
+  </div>
+</footer>
+
+<script>
+/* mobile drawer */
+const menuBtn = document.querySelector('.menu-toggle');
+const nav = document.getElementById('mobileNav');
+const overlay = document.querySelector('.nav-overlay');
+
+function closeNav(){
+  nav.classList.remove('open');
+  overlay.classList.remove('show');
+  menuBtn?.setAttribute('aria-expanded','false');
+}
+
+menuBtn?.addEventListener('click', ()=>{
+  const isOpen = nav.classList.toggle('open');
+  overlay.classList.toggle('show', isOpen);
+  menuBtn.setAttribute('aria-expanded', String(isOpen));
+});
+
+overlay?.addEventListener('click', closeNav);
+window.addEventListener('keydown', e=>{ if(e.key==='Escape') closeNav(); });
+document.querySelectorAll('#mobileNav a').forEach(a=> a.addEventListener('click', closeNav));
+</script>
+
+</body>
+</html>

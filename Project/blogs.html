@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Blogs / Articles — Samir J. Shah</title>
+
+<!-- Fonts & Icons -->
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+
+<!-- Shared header/footer styles -->
+<link rel="stylesheet" href="/assets/site.css" />
+
+<style>
+:root{
+  --ink:#1f2937;
+  --accent1:#F97316; --accent2:#EA580C;
+  --softbg1:#FFF7ED; --softbg2:#FFE7D3;
+  --card:#ffffff; --stroke:#f1e7db;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{
+  font-family:'Poppins',system-ui,Segoe UI,Arial,sans-serif;
+  background:linear-gradient(180deg,var(--softbg1),var(--softbg2));
+  color:var(--ink);
+}
+
+/* Page heading */
+.page-hero{padding:54px 20px 10px;text-align:center}
+.page-hero h1{
+  font-family:'Playfair Display',serif;
+  font-size:clamp(1.8rem,1.1rem + 2.2vw,2.6rem);
+  color:#1c2d57;
+  margin:0 0 8px;
+}
+.page-hero p{opacity:.9}
+
+/* Grid */
+.wrap{max-width:1180px;margin:0 auto;padding:22px 20px 70px}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:20px}
+.card{
+  background:var(--card);
+  border:1px solid var(--stroke);
+  border-radius:16px;
+  box-shadow:0 10px 24px rgba(0,0,0,.06);
+  overflow:hidden;text-align:center;padding:18px 18px 20px;
+  transition:transform .2s ease, box-shadow .2s ease;
+}
+.card:hover{transform:translateY(-4px);box-shadow:0 16px 30px rgba(0,0,0,.12)}
+.badge{
+  display:inline-flex;align-items:center;gap:8px;margin:6px auto 10px;
+  padding:8px 12px;border:1px solid #eee;border-radius:12px;
+  background:#fff;font-weight:800;box-shadow:0 6px 14px rgba(0,0,0,.06)
+}
+.badge i{font-size:18px;color:#e11d48}
+.meta h3{margin:10px 0 12px;font-size:1.02rem;font-weight:800}
+.btnrow{display:flex;justify-content:center;gap:10px;flex-wrap:wrap}
+.btn{
+  display:inline-flex;align-items:center;gap:8px;
+  background:linear-gradient(90deg,var(--accent1),var(--accent2));
+  color:#fff;padding:10px 14px;border-radius:10px;font-weight:800;font-size:.9rem
+}
+.btn:hover{filter:brightness(1.05)}
+.btn-ghost{
+  display:inline-flex;align-items:center;gap:8px;
+  background:#fff;color:#0f172a;border:1px solid #e5e7eb;
+  padding:9px 13px;border-radius:10px;font-weight:700
+}
+.btn-ghost:hover{background:#0f172a;color:#fff;border-color:#0f172a}
+
+/* Small screens */
+@media (max-width:600px){
+  .wrap{padding-bottom:48px}
+  .meta h3{font-size:1rem}
+}
+</style>
+</head>
+<body>
+
+<!-- shared header -->
+<div id="header"></div>
+
+<!-- page heading -->
+<section class="page-hero">
+  <h1>Blogs / Articles</h1>
+  <p>Published interviews and opinion pieces by Samir J. Shah.</p>
+</section>
+
+<section class="wrap">
+  <div id="grid" class="grid"></div>
+</section>
+
+<!-- shared footer -->
+<div id="footer"></div>
+
+<!-- shared injector -->
+<script src="/assets/shared.js" data-base=""></script>
+
+<script>
+/* NOTE:
+   Keep the folder name exactly as it is on disk (case-sensitive on hosting).
+   You showed "Blogs" with a capital B — we keep that here. */
+const FOLDER = "Blogs/";
+
+/* List your PDFs here (title can be anything; file must match exactly). */
+const FILES = [
+  { file:"A Landmark India - Middle East - Europe Economic Corridor - Cargo Connect - Oct 2023.pdf", title:"A Landmark India – Middle East – Europe Economic Corridor — Cargo Connect — Oct 2023" },
+  { file:"Cargo Insights - Nurturing tomorrow's logistics innovators - May 2024.pdf", title:"Cargo Insights — Nurturing tomorrow’s logistics innovators — May 2024" },
+  { file:"Decoding Custom Brokers Examination - Cargo Talk - Jan. 2023.pdf", title:"Decoding Customs Brokers Examination — Cargo Talk — Jan 2023" },
+  { file:"Essential Strategies for Sustaining Competitiveness in the Cargo Sector - 21.8.23.pdf", title:"Essential Strategies for Sustaining Competitiveness in the Cargo Sector — 21.8.23" },
+  { file:"Feature Insights - Cargo Insights - October 2023.pdf", title:"Feature Insights — Cargo Insights — October 2023" },
+  { file:"Industry Movements - Cargo Insights - Oct. 2023.pdf", title:"Industry Movements — Cargo Insights — Oct. 2023" },
+  { file:"Q & A Samir J Shah - Cago Connect - Oct 2023.pdf", title:"Q & A Samir J Shah — Cargo Connect — Oct 2023" },
+  { file:"Maritime SheEO (She of Change Issue 11) Oct. 2023.pdf", title:"Maritime SheEO (She of Change Issue 11) — Oct 2023" },
+  { file:"Maritime Gateway Oct - 2023.pdf", title:"Maritime Gateway — Oct 2023" }
+];
+
+const grid = document.getElementById('grid');
+
+FILES.forEach(item => {
+  // Encode the filename so spaces and punctuation work online
+  const fileURL = FOLDER + encodeURIComponent(item.file);
+
+  const card = document.createElement('article');
+  card.className = 'card';
+  card.innerHTML = `
+    <span class="badge" aria-label="PDF file"><i class="fa-solid fa-file-pdf"></i> PDF</span>
+    <div class="meta"><h3>${item.title}</h3></div>
+    <div class="btnrow">
+      <a class="btn" href="${fileURL}" target="_blank" rel="noopener" aria-label="View ${item.title}">
+        <i class="fa-solid fa-eye"></i> View
+      </a>
+      <a class="btn-ghost" href="${fileURL}" download aria-label="Download ${item.title}">
+        <i class="fa-solid fa-download"></i> Download
+      </a>
+    </div>
+  `;
+  grid.appendChild(card);
+});
+</script>
+
+</body>
+</html>

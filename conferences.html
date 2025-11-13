@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
+<title>Conferences & Conventions — Samir J. Shah</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+
+<style>
+:root{
+  --graphite:#0B1220; --ink:#1f2937;
+  --accent1:#F97316; --accent2:#EA580C;
+  --softbg1:#FFF7ED; --softbg2:#FFE7D3;
+  --stroke:#e2d9cf;
+  --beige:#f2ebe3; --beige-border:#e2d9cf;
+}
+
+/* Reset */
+*{box-sizing:border-box}
+html,body{margin:0}
+a{text-decoration:none}
+img{max-width:100%;display:block}
+
+/* Base */
+body{
+  font-family:'Poppins',system-ui,Segoe UI,Arial,sans-serif;
+  line-height:1.6; color:var(--ink);
+  background:linear-gradient(180deg,var(--softbg1),var(--softbg2));
+  -webkit-tap-highlight-color:transparent;
+  overflow-x:hidden;
+}
+
+/* ===== CANONICAL HEADER (mobile-friendly) ===== */
+.topbar{
+  position:sticky; top:0; z-index:1000;
+  background:var(--beige);
+  border-bottom:1px solid var(--beige-border);
+  box-shadow:0 2px 6px rgba(0,0,0,.05);
+}
+.nav{max-width:1180px;margin:0 auto;padding:12px 16px;display:flex;align-items:center;gap:12px}
+.brand{display:flex;align-items:center;gap:10px;color:#db6809;font-weight:800;font-size:1.15rem}
+.brand img{width:48px;height:48px;border-radius:50%;object-fit:cover;border:2px solid var(--accent1)}
+.navlinks{margin-left:auto;display:flex;gap:22px;flex-wrap:wrap}
+.navlinks a{color:var(--ink);font-weight:700;opacity:.85;transition:.25s}
+.navlinks a:hover{color:var(--accent1);opacity:1}
+
+/* hamburger for mobile */
+.menu-toggle{
+  margin-left:auto;width:42px;height:38px;border:0;border-radius:10px;cursor:pointer;
+  background:#fff;box-shadow:0 2px 8px rgba(0,0,0,.08);display:none;place-items:center
+}
+.menu-toggle i{font-size:18px;color:#0b1220}
+
+@media (max-width:860px){
+  .menu-toggle{display:grid}
+  .navlinks{
+    position:fixed; left:0; right:0; bottom:0;
+    background:#fff; border-top-left-radius:16px; border-top-right-radius:16px;
+    box-shadow:0 -10px 30px rgba(0,0,0,.18);
+    padding:14px 18px 18px; gap:10px;
+    transform:translateY(110%); transition:transform .28s ease;
+    display:grid; grid-template-columns:1fr 1fr; z-index:1001;
+  }
+  .navlinks.open{ transform:translateY(0) }
+  .navlinks a{padding:12px 10px;border:1px solid #eef0f3;border-radius:10px;text-align:center}
+}
+
+/* Hero */
+.hero{text-align:center;padding:64px 16px;background:linear-gradient(180deg,var(--softbg1),#fff)}
+.hero i{font-size:38px;color:var(--accent1)}
+.hero h1{font-family:'Playfair Display',serif;font-size:clamp(2rem,1.2rem + 2vw,3rem);color:#1c2d57;margin:8px 0}
+.hero p{color:#475569;max-width:820px;margin:0 auto}
+
+/* Grid */
+.wrap{max-width:1180px;margin:0 auto;padding:28px 16px 64px}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px}
+.card{
+  background:#fff;border:1px solid #f1e7db;border-radius:16px;
+  box-shadow:0 10px 24px rgba(0,0,0,.06);
+  overflow:hidden;display:flex;flex-direction:column;transition:.25s
+}
+.card:hover{transform:translateY(-3px);box-shadow:0 16px 40px rgba(234,88,12,.18)}
+.cover{aspect-ratio:3/2;background:#fff7f0;display:grid;place-items:center;overflow:hidden}
+.cover img{width:100%;height:100%;object-fit:cover;transition:transform .4s ease}
+.card:hover .cover img{transform:scale(1.05)}
+.meta{padding:12px 14px}
+.meta h3{margin:0 0 6px;font-size:1.02rem;color:#0f172a}
+.meta p{margin:0;color:#4b5563;font-size:.95rem}
+
+/* ===== CANONICAL FOOTER ===== */
+.footer{
+  background:var(--graphite);
+  border-top:1px solid #182233;
+  color:#d6dbe3; padding:32px 16px; margin-top:40px;
+  position:relative;
+}
+.footer::before{
+  content:""; position:absolute; left:0; top:0; right:0; height:3px;
+  background:linear-gradient(90deg,var(--accent1),var(--accent2));
+}
+.footwrap{max-width:1180px;margin:0 auto;display:grid;gap:12px;grid-template-columns:repeat(auto-fit,minmax(220px,1fr))}
+.fitem{display:flex;align-items:center;gap:10px}
+.fitem i{color:var(--accent1)}
+.fitem a{color:#fff;font-weight:700}
+.fitem a:hover{color:#EA580C}
+.fitem span{color:#e7ebf2;font-weight:700}
+
+/* ===== UNIFORM HERO HEADER STYLE (SAME FOR ALL PAGES) ===== */
+.hero {
+  text-align: center;
+  padding: 72px 20px; /* consistent spacing top-bottom */
+  background: linear-gradient(180deg, var(--softbg1), #fff);
+}
+
+.hero .cap {
+  font-size: 42px;
+  color: var(--accent1);
+  margin-bottom: 10px;
+}
+
+.hero h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(1.8rem, 1.1rem + 2.4vw, 3rem); /* scales nicely */
+  margin-bottom: 8px;
+  color: #1c2d57;
+}
+
+.hero p {
+  color: #475569;
+  max-width: 760px;
+  margin: 0 auto 18px;
+  font-size: clamp(.98rem, .9rem + .4vw, 1.06rem);
+}
+
+</style>
+</head>
+<body>
+
+<!-- ===== HEADER (exact links/order) ===== -->
+<div class="topbar">
+  <div class="nav">
+    <a class="brand" href="index.html">
+      <img src="Samir J. Shah photo.jpg" alt="SJS"><span>Samir J. Shah</span>
+    </a>
+
+    <button class="menu-toggle" aria-label="Menu" aria-expanded="false"><i class="fa-solid fa-bars"></i></button>
+
+    <nav class="navlinks" id="mobileNav">
+      <a href="about.html">About</a>
+      <a href="Affiliations.html">Affiliations</a>
+      <a href="books.html">Books</a>
+      <a href="news.html">Media</a>
+      <a href="blogs.html">blogs</a>
+      <a href="#contact">Connect</a>
+    </nav>
+  </div>
+</div>
+
+<!-- Hero -->
+<section class="hero">
+  <i class="fa-solid fa-microphone"></i>
+  <h1>Conferences & Conventions</h1>
+  <p>Participation and presentations at national and international forums representing India’s logistics and customs fraternity.</p>
+</section>
+
+<!-- Grid -->
+<section class="wrap">
+  <div class="grid">
+
+    <!-- WCO -->
+    <article class="card">
+      <div class="cover">
+        <img loading="lazy" src="conferences/wco.jpg" alt="World Customs Organization"
+             onerror="this.onerror=null; this.src='conferences/placeholder.jpg'">
+      </div>
+      <div class="meta">
+        <h3>World Customs Organization (WCO) Forum</h3>
+        <p>Presented on digital transformation in Customs, risk management systems, and global cooperation for trade facilitation.</p>
+      </div>
+    </article>
+
+    <!-- FFFAI -->
+    <article class="card">
+      <div class="cover">
+        <img loading="lazy" src="conferences/fffai.jpg" alt="FFFAI Convention"
+             onerror="this.onerror=null; this.src='conferences/placeholder.jpg'">
+      </div>
+      <div class="meta">
+        <h3>FFFAI Annual Convention</h3>
+        <p>Delivered keynote on empowering India’s freight forwarding community through skill development and global networking.</p>
+      </div>
+    </article>
+
+    <!-- FIATA -->
+    <article class="card">
+      <div class="cover">
+        <img loading="lazy" src="conferences/fiata.jpeg" alt="FIATA World Congress"
+             onerror="this.onerror=null; this.src='conferences/placeholder.jpeg'">
+      </div>
+      <div class="meta">
+        <h3>FIATA World Congress 2025</h3>
+        <p>Represented India at the global logistics stage to discuss policy, trade facilitation, and education initiatives.</p>
+      </div>
+    </article>
+
+    <!-- ACAAI -->
+    <article class="card">
+      <div class="cover">
+        <img loading="lazy" src="conferences/acaai.jpg" alt="ACAAI Convention"
+             onerror="this.onerror=null; this.src='conferences/placeholder.jpg'">
+      </div>
+      <div class="meta">
+        <h3>ACAAI Annual Convention</h3>
+        <p>Delivered insights on Customs Broker Licensing Regulations and air freight modernization.</p>
+      </div>
+    </article>
+
+    <!-- FIEO -->
+    <article class="card">
+      <div class="cover">
+        <img loading="lazy" src="conferences/fieo.jpg" alt="FIEO Seminar"
+             onerror="this.onerror=null; this.src='conferences/placeholder.jpg'">
+      </div>
+      <div class="meta">
+        <h3>FIEO Trade Seminar</h3>
+        <p>Keynote address on export documentation and trade compliance for Indian MSMEs and startups.</p>
+      </div>
+    </article>
+
+    <!-- National Logistics Day -->
+    <article class="card">
+      <div class="cover">
+        <img loading="lazy" src="conferences/logistics.jpg" alt="National Logistics Day"
+             onerror="this.onerror=null; this.src='conferences/placeholder.jpg'">
+      </div>
+      <div class="meta">
+        <h3>National Logistics Day Summit</h3>
+        <p>Spoke on the future of logistics education and India’s journey towards a $10 trillion economy.</p>
+      </div>
+    </article>
+
+  </div>
+</section>
+
+<!-- ===== FOOTER (exact 4 items) ===== -->
+<footer id="contact" class="footer">
+  <div class="footwrap">
+    <div class="fitem"><i class="fa-solid fa-envelope"></i><a href="mailto:samir@jbsacademy.com">samir@jbsacademy.com</a></div>
+    <div class="fitem"><i class="fa-solid fa-phone"></i><a href="tel:+919574005089">+91 9574005089</a></div>
+    <div class="fitem"><i class="fa-brands fa-linkedin"></i><a href="https://www.linkedin.com/in/samirjshah1/" target="_blank" rel="noopener">LinkedIn Profile</a></div>
+    <div class="fitem"><i class="fa-solid fa-location-dot"></i><span>Ahmedabad, India</span></div>
+  </div>
+</footer>
+
+<script>
+/* Mobile menu toggle */
+const menuBtn = document.querySelector('.menu-toggle');
+const navLinks = document.getElementById('mobileNav');
+menuBtn?.addEventListener('click', ()=>{
+  const open = navLinks.classList.toggle('open');
+  menuBtn.setAttribute('aria-expanded', String(open));
+});
+window.addEventListener('keydown', (e)=>{ if(e.key==='Escape') navLinks.classList.remove('open') });
+document.querySelectorAll('#mobileNav a').forEach(a=>{
+  a.addEventListener('click', ()=> navLinks.classList.remove('open'));
+});
+</script>
+
+</body>
+</html>

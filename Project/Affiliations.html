@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Affiliations — Samir J. Shah</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+
+<style>
+:root{
+  --graphite:#0B1220;
+  --ink:#1f2937;
+  --accent1:#F97316;
+  --accent2:#EA580C;
+  --softbg1:#FFF7ED;
+  --softbg2:#FFE7D3;
+
+  --tileBorder: rgba(0,0,0,.26);
+  --tileH: 150px;
+  --radius: 14px;
+  --shadow: 0 4px 14px rgba(0,0,0,.08);
+  --shadowHover: 0 18px 36px rgba(0,0,0,.18);
+
+  --beige:#f2ebe3;
+  --beige-border:#e2d9cf;
+}
+
+/* RESET */
+*{box-sizing:border-box;margin:0;padding:0}
+img{border:0;max-width:100%;display:block}
+a{text-decoration:none !important} a:hover{text-decoration:none !important}
+
+/* BACKGROUND */
+body{
+  font-family:'Poppins',system-ui,Segoe UI,Arial,sans-serif;
+  color:var(--ink); overflow-x:hidden;
+  background:linear-gradient(180deg,var(--softbg1),var(--softbg2));
+}
+
+/* ===== CANONICAL HEADER (exact) ===== */
+.topbar{
+  background:var(--beige);
+  border-bottom:1px solid var(--beige-border);
+  position:sticky;top:0;z-index:10;
+  box-shadow:0 2px 6px rgba(0,0,0,.05)
+}
+.nav{max-width:1180px;margin:0 auto;padding:16px 22px;display:flex;align-items:center}
+.brand{display:flex;align-items:center;gap:12px;color:#db6809;text-decoration:none;font-weight:800;font-size:1.3rem}
+.brand img{width:54px;height:54px;border-radius:50%;border:2px solid var(--accent1);object-fit:cover}
+.navlinks{margin-left:auto;display:flex;gap:22px;flex-wrap:wrap}
+.navlinks a{color:var(--ink);text-decoration:none;font-weight:700;opacity:.85;transition:.25s}
+.navlinks a:hover{color:var(--accent1);opacity:1}
+
+/* ===== Books-style header (NO BOX) ===== */
+.pagehead{padding:64px 20px 28px;text-align:center;}
+.iconbadge{
+  display:inline-grid;place-items:center;width:42px;height:42px;border-radius:12px;margin:0 auto 14px;
+  background:linear-gradient(135deg,var(--accent1),var(--accent2)); color:#fff; font-size:18px;
+  box-shadow:0 6px 16px rgba(234,88,12,.35);
+}
+.pagehead h1{
+  font-family:'Playfair Display',serif;
+  font-size:clamp(2rem,1rem + 2.6vw,3.2rem);
+  color:#0b1220;margin:2px 0 4px;
+}
+.pagehead p{color:#475569;max-width:720px;margin:8px auto 0;font-size:1.05rem;}
+
+/* ===== SECTION WRAPPER ===== */
+.section{max-width:1180px;margin:22px auto 48px;padding:0 20px;position:relative}
+.section .spot{
+  position:relative;border-radius:18px;padding:16px 10px;
+  background: radial-gradient(520px 520px at var(--spotX,60%) var(--spotY,30%), rgba(255,255,255,0.44), transparent 60%);
+  mix-blend-mode:soft-light; pointer-events:none;
+}
+.section .title{display:flex;align-items:center;gap:12px;margin:10px 0 16px; opacity:0; transform:translateY(10px)}
+.section.in .title{animation:fadeUp .6s ease forwards}
+.badge{
+  font-weight:800;color:#fff;background:linear-gradient(90deg,var(--accent1),var(--accent2));
+  border-radius:999px;padding:6px 12px;font-size:.8rem;letter-spacing:.06em;text-transform:uppercase;
+}
+.h2{font-family:'Playfair Display',serif;font-size:clamp(1.4rem,1rem + 1.2vw,2rem);margin:0}
+.count{font-weight:800;opacity:.65}
+@keyframes fadeUp{to{opacity:1;transform:none}}
+
+/* ===== LOGO GRID ===== */
+.logo-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+@media(max-width:1100px){.logo-grid{grid-template-columns:repeat(3,1fr)}}
+@media(max-width:780px){.logo-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:520px){.logo-grid{grid-template-columns:1fr}}
+
+.tile{
+  position:relative;background:#fff;border:1.1px solid var(--tileBorder);
+  border-radius:var(--radius); padding:12px; height:var(--tileH);
+  display:flex;align-items:center;justify-content:center;overflow:hidden;
+  box-shadow:var(--shadow); transition:transform .15s ease, box-shadow .2s ease, border-color .2s ease, filter .2s ease;
+  filter:grayscale(.15) saturate(.95);
+  opacity:0; transform:translateY(22px);
+}
+.tile img{max-width:100%;max-height:100%;object-fit:contain}
+.tile::before{
+  content:""; position:absolute; inset:-20%; transform:skewX(-20deg) translateX(-140%);
+  background:linear-gradient(90deg, rgba(255,255,255,0) 0%, rgba(255,255,255,.7) 45%, rgba(255,255,255,0) 100%);
+  pointer-events:none;
+}
+.tile.show{animation:tileIn .55s ease forwards}
+.tile.shine::before{animation:shine 850ms ease 140ms both}
+.tile:hover{ box-shadow:var(--shadowHover), 0 0 0 4px rgba(234,88,12,.10); border-color:rgba(0,0,0,.45); filter:grayscale(0) saturate(1) }
+
+@keyframes tileIn{to{opacity:1;transform:translateY(0)}}
+@keyframes shine{to{transform:skewX(-20deg) translateX(140%)}}
+
+/* ===== CANONICAL FOOTER ===== */
+.footer{
+  background:var(--graphite);color:#d6dbe3;padding:44px 20px;margin-top:40px;
+  border-top:1px solid #182233; position:relative;
+}
+.footer::before{
+  content:""; position:absolute; left:0; top:0; right:0; height:3px;
+  background:linear-gradient(90deg,var(--accent1),var(--accent2));
+}
+.footwrap{max-width:1180px;margin:0 auto;display:grid;gap:18px;grid-template-columns:repeat(auto-fit,minmax(260px,1fr))}
+.fitem{display:flex;align-items:center;gap:10px}
+.fitem i{color:var(--accent1)}
+.fitem a{color:#fff;font-weight:700}
+.fitem a:hover{color:#EA580C}
+.fitem span{color:#e7ebf2;font-weight:700}
+</style>
+</head>
+<body>
+
+<!-- ===== NAV (exact links/order/colors/sizes) ===== -->
+<div class="topbar">
+  <div class="nav">
+    <a class="brand" href="index.html"><img src="Samir J. Shah photo.jpg" alt="Samir J. Shah"><span>Samir J. Shah</span></a>
+    <nav class="navlinks">
+      <a href="about.html">About</a>
+      <a href="Affiliations.html" style="color:var(--accent1)">Affiliations</a>
+      <a href="books.html" id="nav-books">Books</a>
+      <a href="news.html"  id="nav-media">Media</a>
+      <a href="blogs.html" id="nav-blogs">blogs</a>
+      <a href="#contact">Connect</a>
+    </nav>
+  </div>
+</div>
+
+<!-- SIMPLE BOOKS-LIKE HEADER -->
+<header class="pagehead">
+  <span class="iconbadge"><i class="fa-solid fa-award"></i></span>
+  <h1>Recognitions & Affiliations</h1>
+  <p>Independent recognitions and institutional affiliations across international, national, and state levels.</p>
+</header>
+
+<!-- INTERNATIONAL -->
+<section class="section" id="international">
+  <div class="spot"></div>
+  <div class="title"><span class="badge">International</span><h2 class="h2">International Organizations</h2><span class="count" id="label-intl"></span></div>
+  <div class="logo-grid" data-group="international"></div>
+</section>
+
+<!-- NATIONAL -->
+<section class="section" id="national">
+  <div class="spot"></div>
+  <div class="title"><span class="badge">National</span><h2 class="h2">National Organizations</h2><span class="count" id="label-nat"></span></div>
+  <div class="logo-grid" data-group="national"></div>
+</section>
+
+<!-- STATE -->
+<section class="section" id="state">
+  <div class="spot"></div>
+  <div class="title"><span class="badge">State</span><h2 class="h2">State-level Institutes</h2><span class="count" id="label-state"></span></div>
+  <div class="logo-grid" data-group="state"></div>
+</section>
+
+<!-- ===== FOOTER (exact items) ===== -->
+<footer id="contact" class="footer">
+  <div class="footwrap">
+    <div class="fitem"><i class="fa-solid fa-envelope"></i><a href="mailto:samir@jbsacademy.com">samir@jbsacademy.com</a></div>
+    <div class="fitem"><i class="fa-solid fa-phone"></i><a href="tel:+919574005089">+91 9574005089</a></div>
+    <div class="fitem"><i class="fa-brands fa-linkedin"></i><a href="https://www.linkedin.com/in/samirjshah1/" target="_blank">LinkedIn Profile</a></div>
+    <div class="fitem"><i class="fa-solid fa-location-dot"></i><span>Ahmedabad, India</span></div>
+  </div>
+</footer>
+
+<script>
+/* ========= CONFIG ========= */
+const INT_COUNT=5, NAT_COUNT=9, STATE_COUNT=10;
+const FOLDER="Affiliations/";
+const TRY_EXTS=["png","jpg","jpeg","svg","webp"];
+const NAME_MAP={
+  1:"WCO",2:"UNESCO",3:"FIATA",4:"CILT",5:"ACAAI",
+  6:"MSDE",7:"Skill India",8:"LSC",9:"Gati Shakti",10:"FICCI",11:"IACC",12:"Indo-China Chamber",13:"IIMA",14:"FFFAI",
+  15:"GMC",16:"GMU",17:"KSU",20:"B.K. School",18:"Atmiya University",21:"JITO Ahmedabad",22:"EXIM Club",19:"GCCI",23:"SVP India",24:"Dr. Jaimin Vasa MSME Chair"
+};
+
+/* ===== Helper functions ===== */
+function buildImg(pIndex){
+  const img=document.createElement('img');
+  img.alt=NAME_MAP[pIndex]||`p${pIndex}`;
+  img.loading='lazy';
+  let i=0;
+  function tryNext(){if(i>=TRY_EXTS.length){img.dataset.failed="1";return;}img.src=FOLDER+`p${pIndex}.`+TRY_EXTS[i++];}
+  img.onerror=tryNext; tryNext();
+  return img;
+}
+
+function renderRange(holder,start,count){
+  for(let k=0;k<count;k++){
+    const idx=start+k;
+    const tile=document.createElement('div');
+    tile.className='tile';
+    tile.title=NAME_MAP[idx]||`p${idx}`;
+    const img=buildImg(idx);
+    img.addEventListener('error',()=>{if(img.dataset.failed==="1"){tile.remove();updateCounts();}});
+    tile.appendChild(img);
+    holder.appendChild(tile);
+  }
+}
+
+const gIntl=document.querySelector('.logo-grid[data-group="international"]');
+const gNat=document.querySelector('.logo-grid[data-group="national"]');
+const gState=document.querySelector('.logo-grid[data-group="state"]');
+
+renderRange(gIntl,1,INT_COUNT);
+renderRange(gNat,INT_COUNT+1,NAT_COUNT);
+renderRange(gState,INT_COUNT+NAT_COUNT+1,STATE_COUNT);
+
+/* counts */
+function updateCounts(){
+  const i=gIntl.childElementCount,n=gNat.childElementCount,s=gState.childElementCount;
+  document.getElementById('label-intl').textContent=`(${i})`;
+  document.getElementById('label-nat').textContent=`(${n})`;
+  document.getElementById('label-state').textContent=`(${s})`;
+}
+updateCounts();
+
+/* scroll reveal only */
+const sections=document.querySelectorAll('.section');
+const onScreen=el=>{
+  const r=el.getBoundingClientRect();
+  return r.top<innerHeight-80&&r.bottom>80;
+};
+function staggerGrid(grid){
+  const tiles=[...grid.children];
+  tiles.forEach((t,i)=>{
+    setTimeout(()=>{
+      t.classList.add('show','shine');
+      setTimeout(()=>t.classList.remove('shine'),1100);
+    },i*60);
+  });
+}
+function revealSection(sec){
+  if(sec.classList.contains('in'))return;
+  sec.classList.add('in');
+  const grid=sec.querySelector('.logo-grid');
+  staggerGrid(grid);
+}
+function checkReveal(){sections.forEach(sec=>{if(onScreen(sec))revealSection(sec);});}
+window.addEventListener('load',checkReveal);
+window.addEventListener('scroll',checkReveal);
+window.addEventListener('resize',checkReveal);
+</script>
+</body>
+</html>
