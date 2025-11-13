@@ -67,7 +67,7 @@ a:hover{text-decoration:none !important}
 
 /* Mobile toggle (hamburger) — hidden on desktop */
 .menu-toggle{
-  display:none;                 /* <-- important: hidden by default */
+  display:none;
   margin-left:auto;
   background:#fff;border:1px solid var(--beige-border);
   width:40px;height:40px;border-radius:10px;
@@ -79,7 +79,7 @@ a:hover{text-decoration:none !important}
 
 /* Mobile drawer menu */
 .mnav{
-  position:fixed;left:0;right:0;top:64px; /* sits below sticky header */
+  position:fixed;left:0;right:0;top:64px;
   background:#fff;border-top:1px solid #eef0f3;
   transform:translateY(-16px);opacity:0;pointer-events:none;
   transition:.28s ease; z-index:49;
@@ -118,7 +118,7 @@ a:hover{text-decoration:none !important}
 @keyframes underlineMove{0%{background-position:0% 50%}50%{background-position:100% 50%}100%{background-position:0% 50%}}
 .lead{color:#334155;max-width:62ch;margin:0 0 26px;font-size:1.05rem;line-height:1.7}
 
-/* CTA BUTTON – Sunset Glow */
+/* CTA BUTTON */
 .cta{
   display:inline-flex;align-items:center;gap:10px;
   background:linear-gradient(90deg,#F97316,#EA580C); color:#fff;
@@ -238,13 +238,12 @@ a:hover{text-decoration:none !important}
 .drawer-body{ padding:16px 18px 24px; overflow:auto }
 .drawer-grid{ display:grid; grid-template-columns:repeat(3,1fr); gap:16px }
 
-/* ===== LinkedIn (single-line, auto-scroll, no fades) ===== */
+/* ===== LinkedIn (single-line, auto-scroll) ===== */
 .linked-title{font-family:'Playfair Display',serif;text-align:center;font-size:clamp(1.6rem,1.1rem + 2vw,3rem);color:#0f2d57;margin:0 0 10px}
 .linked-sub{color:#4b5563;text-align:center;max-width:900px;margin:0 auto 24px;padding:0 18px}
 .marquee{ position:relative; overflow:hidden; max-width:1180px; margin:0 auto; padding:0 20px }
 .belt{ display:block; position:relative }
 
-/* renamed from .row to .li-row to avoid Bootstrap conflicts */
 .li-row{
   --speed:55s; --roww:2000px;
   display:flex; gap:14px; padding:12px 0;
@@ -276,35 +275,28 @@ a:hover{text-decoration:none !important}
   .hero .wrap{gap:38px}
 }
 
-/* Mobile breakpoint */
 @media (max-width:900px){
-  /* Header: show hamburger, hide desktop links */
   .nav{padding:12px 14px}
-  .navlinks{display:none}          /* hide desktop nav */
-  .menu-toggle{display:grid}       /* show hamburger only on mobile */
+  .navlinks{display:none}
+  .menu-toggle{display:grid}
 
-  /* Reduce hero spacing and stack */
   .hero{padding:48px 16px 56px}
   .hero .wrap{grid-template-columns:1fr;gap:22px}
   .media{order:2}
   .hero .wrap > div:last-child{order:1}
   .lead{font-size:1rem}
 
-  /* Cards grid tighter */
   .grid-section{padding:56px 16px}
   .grid-wrap{gap:16px;grid-template-columns:repeat(auto-fit,minmax(240px,1fr))}
   .card{padding:18px}
 
-  /* Strip and runner smaller */
   .strip img{height:160px}
   .run-slider{--height:240px;padding:0 34px}
   .run-slider .nav{width:36px;height:36px}
 
-  /* Videos grid 2 cols -> 1 col smaller */
   .video-grid{grid-template-columns:repeat(2,1fr)}
   .drawer-grid{grid-template-columns:repeat(2,1fr)}
 
-  /* LinkedIn cards a bit smaller */
   .vcard{min-width:260px;max-width:280px}
   .vthumb img{height:170px}
 }
@@ -325,11 +317,13 @@ a:hover{text-decoration:none !important}
 <body>
 
 <!-- NAV -->
-<div class="topbar" role="banner">
+<header class="topbar" role="banner">
   <div class="nav" role="navigation" aria-label="Main">
-    <a class="brand" href="#"><img src="Samir J. Shah photo.jpg" alt="Portrait of Samir J. Shah"><span>Samir J. Shah</span></a>
+    <a class="brand" href="index.html">
+      <img src="Samir J. Shah photo.jpg" alt="Portrait of Samir J. Shah">
+      <span>Samir J. Shah</span>
+    </a>
 
-    <!-- Desktop links -->
     <nav class="navlinks" aria-label="Primary">
       <a href="about.html">About</a>
       <a href="Affiliations.html">Affiliations</a>
@@ -339,14 +333,12 @@ a:hover{text-decoration:none !important}
       <a href="#contact">Connect</a>
     </nav>
 
-    <!-- Mobile hamburger -->
     <button class="menu-toggle" id="menuToggle" aria-expanded="false" aria-controls="mnav" aria-label="Open menu">
       <i class="fa-solid fa-bars"></i>
     </button>
   </div>
-</div>
+</header>
 
-<!-- Mobile menu (hidden on desktop) -->
 <div class="moverlay" id="moverlay" hidden></div>
 <nav id="mnav" class="mnav" aria-label="Mobile" hidden>
   <div class="mnav-inner">
@@ -359,104 +351,124 @@ a:hover{text-decoration:none !important}
   </div>
 </nav>
 
-<!-- HERO -->
-<section class="hero">
-  <div class="wrap">
-    <div class="media"><img loading="lazy" src="Samir J. Shah photo.jpg" alt="Samir J. Shah"></div>
-    <div>
-      <h2 class="kicker"><span id="typewriter"></span></h2>
-      <h1 class="hero-title">Where <span class="word logistics">Logistics</span> Meets <span class="word leadership">Leadership</span>.</h1>
-      <p class="lead">Empowering India’s logistics & EXIM ecosystem through decades of expertise — shaping professionals, policies, and performance in international trade.</p>
-      <a class="cta" href="mailto:priyanka@jbsacademy.com?subject=Inquiry%20for%20Samir%20J.%20Shah&body=Hello%20Team%2C%0A%0AI%20would%20like%20to%20connect%20with%20Mr.%20Samir%20J.%20Shah%20regarding...%0A%0ARegards%2C%0A">
-        <i class="fa-solid fa-comments"></i> CONNECT WITH SAMIR J. SHAH <i class="fa-solid fa-arrow-right"></i>
-      </a>
+<main>
+  <!-- HERO -->
+  <section class="hero">
+    <div class="wrap">
+      <div class="media">
+        <img src="Samir J. Shah photo.jpg" alt="Samir J. Shah speaking at a logistics event">
+      </div>
+      <div>
+        <h2 class="kicker"><span id="typewriter"></span></h2>
+        <h1 class="hero-title">Where <span class="word logistics">Logistics</span> Meets <span class="word leadership">Leadership</span>.</h1>
+        <p class="lead">Empowering India’s logistics &amp; EXIM ecosystem through decades of expertise — shaping professionals, policies, and performance in international trade.</p>
+        <a class="cta" href="mailto:priyanka@jbsacademy.com?subject=Inquiry%20for%20Samir%20J.%20Shah&body=Hello%20Team%2C%0A%0AI%20would%20like%20to%20connect%20with%20Mr.%20Samir%20J.%20Shah%20regarding...%0A%0ARegards%2C%0A">
+          <i class="fa-solid fa-comments"></i> CONNECT WITH SAMIR J. SHAH <i class="fa-solid fa-arrow-right"></i>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- TRAINING SECTION -->
+  <section id="police-training" class="training">
+    <div class="strip" data-autoscroll>
+      <div class="strip-track">
+        <img src="images/p1.jpg" alt="Training session 1">
+        <img src="images/p2.jpg" alt="Training session 2">
+        <img src="images/p3.jpg" alt="Training session 3">
+        <img src="images/p4.jpg" alt="Training session 4">
+        <img src="images/p5.jpg" alt="Training session 5">
+        <img src="images/p6.jpg" alt="Training session 6">
+
+        <!-- duplicated for smooth loop -->
+        <img src="images/p1.jpg" alt="" aria-hidden="true">
+        <img src="images/p2.jpg" alt="" aria-hidden="true">
+        <img src="images/p3.jpg" alt="" aria-hidden="true">
+        <img src="images/p4.jpg" alt="" aria-hidden="true">
+        <img src="images/p5.jpg" alt="" aria-hidden="true">
+        <img src="images/p6.jpg" alt="" aria-hidden="true">
+      </div>
+    </div>
+
+    <h3 class="section-title">Awards</h3>
+
+    <div class="run-slider" id="runSlider" aria-label="Awards gallery">
+      <button class="nav prev" aria-label="Previous">&#10094;</button>
+      <div class="track">
+        <img src="images/g1.jpg" alt="Award photograph 1">
+        <img src="images/g2.jpg" alt="Award photograph 2">
+        <img src="images/g3.jpg" alt="Award photograph 3">
+        <img src="images/g4.jpg" alt="Award photograph 4">
+        <img src="images/g5.jpg" alt="Award photograph 5">
+        <img src="images/g6.jpg" alt="Award photograph 6">
+        <img src="images/g7.jpg" alt="Award photograph 7">
+        <img src="images/g8.jpg" alt="Award photograph 8">
+        <img src="images/g9.jpg" alt="Award photograph 9">
+      </div>
+      <button class="nav next" aria-label="Next">&#10095;</button>
+    </div>
+  </section>
+
+  <!-- CARDS GRID -->
+  <section class="grid-section" id="sections">
+    <div class="grid-wrap">
+      <a class="card" href="education.html"><i class="fa-solid fa-graduation-cap"></i><h3>Education &amp; Professional Qualification</h3><p>Academic and professional milestones shaping his journey.</p></a>
+      <a class="card" href="positions.html"><i class="fa-solid fa-user-tie"></i><h3>Positions held + Community work</h3><p>Leadership positions and voluntary contributions in logistics &amp; trade.</p></a>
+      <a class="card" href="social-causes.html"><i class="fa-solid fa-hands-helping"></i><h3>Social causes</h3><p>Efforts dedicated to education, empowerment, and community service.</p></a>
+
+      <a id="books-card" class="card" href="books.html"><i class="fa-solid fa-book"></i><h3>Books / JBSAPL</h3><p>Publications authored and initiatives by JBS Academy Pvt. Ltd.</p></a>
+
+      <a class="card" href="curriculums.html"><i class="fa-solid fa-layer-group"></i><h3>Curriculums developed</h3><p>Specialized academic and industry-aligned programs designed and implemented.</p></a>
+      <a class="card" href="teachings.html"><i class="fa-solid fa-chalkboard-user"></i><h3>Teachings</h3><p>Knowledge sharing through lectures, mentorship, and training programs.</p></a>
+      <a class="card" href="conferences.html"><i class="fa-solid fa-microphone"></i><h3>Conventions, Conferences, Congresses</h3><p>Participation and presentations at national and international forums.</p></a>
+      <a id="blogs-card" class="card" href="blogs.html"><i class="fa-solid fa-pen-nib"></i><h3>Blog / Articles</h3><p>Published insights and opinions on logistics, policy, and trade trends.</p></a>
+
+      <a id="news-card" class="card" href="news.html"><i class="fa-solid fa-newspaper"></i><h3>In the news</h3><p>Media features, interviews, and news highlights of professional contributions.</p></a>
+    </div>
+  </section>
+
+  <!-- ======= VIDEOS SECTION ======= -->
+  <section class="videos-section">
+    <div class="wrap" style="max-width:1180px;margin:0 auto;">
+      <h2 class="title">Videos</h2>
+      <p class="subtitle">Guidance on logistics, customs, and international trade — transforming experience into strategic insight.</p>
+
+      <div class="video-grid" id="videosGrid"></div>
+
+      <div class="center">
+        <button class="btn-primary" id="viewMoreBtn"><i class="fa-solid fa-clapperboard"></i>&nbsp; View more</button>
+        <a class="btn-ghost" href="https://www.youtube.com/@JBSAcademy" target="_blank" rel="noopener">
+          <i class="fa-brands fa-youtube"></i>&nbsp; Open channel
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Drawer -->
+  <div class="drawer" id="videosDrawer" aria-hidden="true">
+    <div class="overlay" id="drawerOverlay"></div>
+    <div class="panel" role="dialog" aria-modal="true" aria-labelledby="drawerTitle">
+      <div class="drawer-header">
+        <h3 id="drawerTitle">All Videos</h3>
+        <button class="btn-ghost" id="drawerClose"><i class="fa-solid fa-xmark"></i>&nbsp; Close</button>
+      </div>
+      <div class="drawer-body">
+        <div class="drawer-grid" id="drawerGrid"></div>
+      </div>
     </div>
   </div>
-</section>
 
-<!-- TRAINING SECTION -->
-<section id="police-training" class="training">
-  <div class="strip" data-autoscroll>
-    <div class="strip-track">
-      <img loading="lazy" src="images/p1.jpg" alt=""><img loading="lazy" src="images/p2.jpg" alt=""><img loading="lazy" src="images/p3.jpg" alt="">
-      <img loading="lazy" src="images/p4.jpg" alt=""><img loading="lazy" src="images/p5.jpg" alt=""><img loading="lazy" src="images/p6.jpg" alt="">
-      <img loading="lazy" src="images/p1.jpg" alt="" aria-hidden="true"><img loading="lazy" src="images/p2.jpg" alt="" aria-hidden="true"><img loading="lazy" src="images/p3.jpg" alt="" aria-hidden="true">
-      <img loading="lazy" src="images/p4.jpg" alt="" aria-hidden="true"><img loading="lazy" src="images/p5.jpg" alt="" aria-hidden="true"><img loading="lazy" src="images/p6.jpg" alt="" aria-hidden="true">
+  <!-- ============ LINKEDIN (Marquee) ============ -->
+  <section class="training" style="background:#fff">
+    <div class="wrap" style="max-width:1180px;margin:0 auto;">
+      <h2 class="linked-title">LinkedIn</h2>
+      <p class="linked-sub">Recent posts and appearances.</p>
+      <div class="marquee" id="liMarquee">
+        <div class="belt" id="liBelt"></div>
+      </div>
     </div>
-  </div>
-
-  <h3 class="section-title">Awards</h3>
-
-  <div class="run-slider" id="runSlider" aria-label="Awards gallery">
-    <button class="nav prev" aria-label="Previous">&#10094;</button>
-    <div class="track">
-      <img loading="lazy" src="images/g1.jpg" alt=""><img loading="lazy" src="images/g2.jpg" alt=""><img loading="lazy" src="images/g3.jpg" alt="">
-      <img loading="lazy" src="images/g4.jpg" alt=""><img loading="lazy" src="images/g5.jpg" alt=""><img loading="lazy" src="images/g6.jpg" alt="">
-      <img loading="lazy" src="images/g7.jpg" alt=""><img loading="lazy" src="images/g8.jpg" alt=""><img loading="lazy" src="images/g9.jpg" alt="">
-    </div>
-    <button class="nav next" aria-label="Next">&#10095;</button>
-  </div>
-</section>
-
-<!-- CARDS GRID -->
-<section class="grid-section" id="sections">
-  <div class="grid-wrap">
-    <a class="card" href="education.html"><i class="fa-solid fa-graduation-cap"></i><h3>Education & Professional Qualification</h3><p>Academic and professional milestones shaping his journey.</p></a>
-    <a class="card" href="positions.html"><i class="fa-solid fa-user-tie"></i><h3>Positions held + Community work</h3><p>Leadership positions and voluntary contributions in logistics & trade.</p></a>
-    <a class="card" href="social-causes.html"><i class="fa-solid fa-hands-helping"></i><h3>Social causes</h3><p>Efforts dedicated to education, empowerment, and community service.</p></a>
-
-    <a id="books-card" class="card" href="books.html"><i class="fa-solid fa-book"></i><h3>Books / JBSAPL</h3><p>Publications authored and initiatives by JBS Academy Pvt. Ltd.</p></a>
-
-    <a class="card" href="curriculums.html"><i class="fa-solid fa-layer-group"></i><h3>Curriculums developed</h3><p>Specialized academic and industry-aligned programs designed and implemented.</p></a>
-    <a class="card" href="teachings.html"><i class="fa-solid fa-chalkboard-user"></i><h3>Teachings</h3><p>Knowledge sharing through lectures, mentorship, and training programs.</p></a>
-    <a class="card" href="conferences.html"><i class="fa-solid fa-microphone"></i><h3>Conventions, Conferences, Congresses</h3><p>Participation and presentations at national and international forums.</p></a>
-    <a id="blogs-card" class="card" href="blogs.html"><i class="fa-solid fa-pen-nib"></i><h3>Blog / Articles</h3><p>Published insights and opinions on logistics, policy, and trade trends.</p></a>
-
-    <a id="news-card" class="card" href="news.html"><i class="fa-solid fa-newspaper"></i><h3>In the news</h3><p>Media features, interviews, and news highlights of professional contributions.</p></a>
-  </div>
-</section>
-
-<!-- ======= VIDEOS (NEW STATIC + DRAWER) ======= -->
-<section class="videos-section">
-  <div class="wrap" style="max-width:1180px;margin:0 auto;">
-    <h2 class="title">Videos</h2>
-    <p class="subtitle">I share my guidance on logistics, customs, and international trade — transforming experience into strategic insight.</p>
-
-    <div class="video-grid" id="videosGrid"></div>
-
-    <div class="center">
-      <button class="btn-primary" id="viewMoreBtn"><i class="fa-solid fa-clapperboard"></i>&nbsp; View more</button>
-      <a class="btn-ghost" href="https://www.youtube.com/@JBSAcademy" target="_blank" rel="noopener">
-        <i class="fa-brands fa-youtube"></i>&nbsp; Open channel
-      </a>
-    </div>
-  </div>
-</section>
-
-<!-- Drawer -->
-<div class="drawer" id="videosDrawer" aria-hidden="true">
-  <div class="overlay" id="drawerOverlay"></div>
-  <div class="panel" role="dialog" aria-modal="true" aria-labelledby="drawerTitle">
-    <div class="drawer-header">
-      <h3 id="drawerTitle">All Videos</h3>
-      <button class="btn-ghost" id="drawerClose"><i class="fa-solid fa-xmark"></i>&nbsp; Close</button>
-    </div>
-    <div class="drawer-body">
-      <div class="drawer-grid" id="drawerGrid"></div>
-    </div>
-  </div>
-</div>
-
-<!-- ============ LINKEDIN (Marquee) ============ -->
-<section class="training" style="background:#fff">
-  <div class="wrap" style="max-width:1180px;margin:0 auto;">
-    <h2 class="linked-title">LinkedIn</h2>
-    <p class="linked-sub">Recent posts and appearances.</p>
-    <div class="marquee" id="liMarquee">
-      <div class="belt" id="liBelt"></div>
-    </div>
-  </div>
-</section>
+  </section>
+</main>
 
 <!-- FOOTER -->
 <footer id="contact" class="footer">
@@ -480,7 +492,7 @@ let tcount = 0, index = 0, currentText = "", letter = "";
   if (el) el.textContent = letter;
   if (letter.length === currentText.length) {
     setTimeout(() => { index = 0; tcount++; type(); }, 1200);
-  } else setTimeout(type, 100);
+  } else setTimeout(type, 90);
 })();
 
 // ===== Mobile menu =====
@@ -502,7 +514,6 @@ function closeMenu(){
 toggle?.addEventListener('click', ()=> (mnav.classList.contains('open')?closeMenu():openMenu()));
 moverlay?.addEventListener('click', closeMenu);
 window.addEventListener('keydown', (e)=>{ if(e.key==='Escape') closeMenu(); });
-// close on link click
 mnav?.addEventListener('click', e=>{ if(e.target.tagName==='A') closeMenu(); });
 
 // ===== Random reveal for cards =====
@@ -571,7 +582,7 @@ window.addEventListener('load',randomRevealOnScroll);
       const cur = new DOMMatrixReadOnly(getComputedStyle(r).transform).m41 || 0;
       const w = parseFloat(getComputedStyle(r).getPropertyValue('--loopW')) || 0;
       let now = cur+px; if(now <= -w) now += 2*w; if(now >=  w) now -= 2*w;
-      r.style.transform = `translateX(${now}px)`; setTimeout(()=> r.style.animationPlayState = 'running', 50);
+      r.style.transform = `translateX(${now}px)`; setTimeout(()=> r.style.animationPlayState = 'running', 60);
     });
   }
 })();
@@ -603,7 +614,7 @@ function renderLI(p){
   a.innerHTML = `
     <div class="vthumb">
       <span class="li-badge">in</span>
-      <img loading="lazy" src="${p.img}" alt="${p.title}">
+      <img src="${p.img}" alt="${p.title}">
     </div>
     <h3>${p.title}</h3>
     <p class="vmeta"><i class="fa-brands fa-linkedin"></i> Open on LinkedIn</p>
@@ -615,13 +626,11 @@ function initSingleLineMarquee(beltEl, items, render, speedSeconds = 55){
   if(!beltEl) return;
 
   const row = document.createElement('div');
-  row.className = 'li-row';  // renamed from 'row'
+  row.className = 'li-row';
 
-  // first set
   const firstSet = items.map(render);
   firstSet.forEach(el => row.appendChild(el));
 
-  // duplicate inside SAME row
   const secondSet = items.map(render);
   secondSet.forEach(el => row.appendChild(el));
 
@@ -644,7 +653,6 @@ function initSingleLineMarquee(beltEl, items, render, speedSeconds = 55){
   new ResizeObserver(measureWidth).observe(beltEl);
 }
 
-// Run marquee
 initSingleLineMarquee(document.getElementById('liBelt'), LI, renderLI, 55);
 
 /* ===== YouTube drawer style ===== */
@@ -656,7 +664,7 @@ function renderVideoCard(v){
   a.className = 'video-card';
   a.innerHTML = `
     <div class="vthumb">
-      <img loading="lazy" src="https://img.youtube.com/vi/${v.id}/mqdefault.jpg" alt="${v.title}">
+      <img src="https://img.youtube.com/vi/${v.id}/mqdefault.jpg" alt="${v.title}">
     </div>
     <h3>${v.title}</h3>
     <p class="vmeta">YouTube • Watch now${v.duration ? ' • ' + v.duration : ''}</p>
@@ -691,9 +699,7 @@ function renderVideoCard(v){
   renderTop3();
 })();
 
-/* =========================
-   NAV → CARD HIGHLIGHTING
-   ========================= */
+/* ===== Nav → Card highlight ===== */
 function setupNavHighlighter(navSelector, cardSelector){
   const nav = document.querySelector(navSelector);
   const card = document.querySelector(cardSelector);
@@ -712,8 +718,6 @@ function setupNavHighlighter(navSelector, cardSelector){
 }
 setupNavHighlighter('#nav-books', '#books-card');
 setupNavHighlighter('#nav-media', '#news-card');
-
-/* Also map the mobile menu anchors to highlight the same cards */
 setupNavHighlighter('#m-books', '#books-card');
 setupNavHighlighter('#m-media', '#news-card');
 
@@ -721,8 +725,7 @@ window.addEventListener('load', ()=>{
   const h = location.hash;
   if(h === '#books-card') document.querySelector('#nav-books')?.click();
   if(h === '#news-card')  document.querySelector('#nav-media')?.click();
-  
-  // Videos top grid
+
   const grid = document.getElementById('videosGrid');
   if (grid && grid.children.length === 0) {
     const frag = document.createDocumentFragment();
